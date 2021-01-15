@@ -1,6 +1,9 @@
 package com.education.confucius.Controller;
 
+import com.pangu.Http.response.RestResult;
+import com.pangu.Redis.RedisUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -11,7 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Date         Author          Description
  * ------------------------------------------ *
  */
-@RequestMapping(value = "/user")
+@RestController
 public class UserController {
 
+    @RequestMapping("/redisInfo")
+    public RestResult getRedisInfo(){
+        RedisUtil.set("name","Confucius");
+        String hello = "Hello!".concat(RedisUtil.get("name"));
+        return RestResult.successResult(hello);
+    }
+
+    @RequestMapping("/")
+    public RestResult welcome(){
+        return RestResult.successResult("welcome");
+    }
 }

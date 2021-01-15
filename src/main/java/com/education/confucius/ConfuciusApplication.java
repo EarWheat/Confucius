@@ -5,8 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(value = "com.pangu")
-@ComponentScan(value = "com.education")
 public class ConfuciusApplication {
 
 	public static void main(String[] args) {
