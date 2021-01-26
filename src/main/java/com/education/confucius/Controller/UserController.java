@@ -1,9 +1,18 @@
 package com.education.confucius.Controller;
 
+import com.education.confucius.Entity.User.User;
+import com.education.confucius.Service.UserService.UserService;
 import com.pangu.Http.response.RestResult;
+import com.pangu.Http.response.ResultEnum;
 import com.pangu.Redis.RedisUtil;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -17,6 +26,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
+    @Resource
+    public UserService userService;
+
     @RequestMapping("/redisInfo")
     public RestResult getRedisInfo(){
         RedisUtil.set("name","Confucius");
@@ -27,5 +39,14 @@ public class UserController {
     @RequestMapping("/")
     public RestResult welcome(){
         return RestResult.successResult("welcome");
+    }
+
+    @RequestMapping("/getUserInfoByName")
+    public RestResult getUserInfoByName(@RequestParam(value = "name") String name){
+        if(StringUtils.isBlank(name)){
+            return RestResult.failResult(ResultEnum.PARAM_EMPTY);
+        }
+        User user = userService.getUserByName(name);
+        return RestResult.successResult(user);
     }
 }
