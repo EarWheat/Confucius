@@ -49,4 +49,14 @@ public class UserController {
         User user = userService.getUserByName(name);
         return RestResult.successResult(user);
     }
+
+    @RequestMapping("/getUserInfo")
+    public RestResult getUserInfo(@RequestParam(value = "name") String name){
+        if(StringUtils.isBlank(name)){
+            return RestResult.failResult(ResultEnum.PARAM_EMPTY);
+        }
+        User user = userService.getUserByName(name);
+        return RestResult.successResult(user);
+    }
+
 }
