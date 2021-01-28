@@ -1,7 +1,7 @@
 package com.education.confucius.Controller;
 
-import com.education.confucius.Entity.User.User;
-import com.education.confucius.Service.UserService.UserService;
+import com.education.confucius.Entity.User;
+import com.education.confucius.Service.UserService.UserServiceImpl;
 import com.pangu.Http.response.RestResult;
 import com.pangu.Http.response.ResultEnum;
 import com.pangu.Redis.RedisUtil;
@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.Optional;
-import java.util.function.Consumer;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -27,7 +25,7 @@ import java.util.function.Consumer;
 public class UserController {
 
     @Resource
-    public UserService userService;
+    public UserServiceImpl userService;
 
     @RequestMapping("/redisInfo")
     public RestResult getRedisInfo(){
@@ -41,21 +39,21 @@ public class UserController {
         return RestResult.successResult("welcome");
     }
 
-    @RequestMapping("/getUserInfoByName")
-    public RestResult getUserInfoByName(@RequestParam(value = "name") String name){
-        if(StringUtils.isBlank(name)){
+    @RequestMapping("/getUserByUserName")
+    public RestResult getUserInfoByName(@RequestParam(value = "userName") String userName){
+        if(StringUtils.isBlank(userName)){
             return RestResult.failResult(ResultEnum.PARAM_EMPTY);
         }
-        User user = userService.getUserByName(name);
+        User user = userService.getUserByUserName(userName);
         return RestResult.successResult(user);
     }
 
     @RequestMapping("/getUserInfo")
-    public RestResult getUserInfo(@RequestParam(value = "name") String name){
+    public RestResult getUserInfo(@RequestParam(value = "userName") String name){
         if(StringUtils.isBlank(name)){
             return RestResult.failResult(ResultEnum.PARAM_EMPTY);
         }
-        User user = userService.getUserByName(name);
+        User user = userService.getUserByUserName(name);
         return RestResult.successResult(user);
     }
 

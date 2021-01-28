@@ -14,11 +14,11 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
  * Date         Author          Description
  * ------------------------------------------ *
  */
-@MqMessageListenerConfig(topic = "pangu", consumerGroup = "confucius_consumer")
-public class PanguConsumer implements MqMessageListener {
-    @Override
-    public RestResult exec(ConsumerRecord<String, String> record) {
-        System.out.println("===confucius record:" + record.toString());
-        return RestResult.successResult();
-    }
-}
+//@MqMessageListenerConfig(topic = "pangu", consumerGroup = "confucius_consumer")
+//public class PanguConsumer implements MqMessageListener {
+//    @Override
+//    public RestResult exec(ConsumerRecord<String, String> record) {
+//        System.out.println("===confucius record:" + record.toString());
+//        return RestResult.successResult();
+//    }
+//}

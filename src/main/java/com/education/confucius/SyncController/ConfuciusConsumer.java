@@ -15,12 +15,12 @@ import org.springframework.stereotype.Component;
  * Date         Author          Description
  * ------------------------------------------ *
  */
-@MqMessageListenerConfig(topic = "confucius", consumerGroup = "confucius_consumer")
-@Component
-public class ConfuciusConsumer implements MqMessageListener {
-    @Override
-    public RestResult exec(ConsumerRecord<String, String> record) {
-        System.out.println("===confucius record:" + record.toString());
-        return RestResult.successResult();
-    }
-}
+//@MqMessageListenerConfig(topic = "confucius", consumerGroup = "confucius_consumer")
+//@Component
+//public class ConfuciusConsumer implements MqMessageListener {
+//    @Override
+//    public RestResult exec(ConsumerRecord<String, String> record) {
+//        System.out.println("===confucius record:" + record.toString());
+//        return RestResult.successResult();
+//    }
+//}

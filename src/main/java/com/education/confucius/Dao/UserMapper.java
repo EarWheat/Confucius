@@ -1,6 +1,6 @@
 package com.education.confucius.Dao;
 
-import com.education.confucius.Entity.User.User;
+import com.education.confucius.Entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -14,5 +14,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserMapper {
-    User getUserByName(String name);
+    User getUserByUserName(String userName);
 }

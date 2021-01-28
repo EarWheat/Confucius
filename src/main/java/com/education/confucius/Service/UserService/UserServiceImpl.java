@@ -1,7 +1,10 @@
 package com.education.confucius.Service.UserService;
 
-import com.education.confucius.Entity.User.User;
+import com.education.confucius.Dao.UserMapper;
+import com.education.confucius.Entity.User;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -15,9 +18,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Override
-    public User getUserByName(String name) {
+    @Resource
+    public UserMapper userMapper;
 
-        return null;
+    @Override
+    public User getUserByUserName(String userName) {
+        return userMapper.getUserByUserName(userName);
     }
 }

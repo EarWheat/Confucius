@@ -1,6 +1,6 @@
 package com.education.confucius.Service.UserService;
 
-import com.education.confucius.Entity.User.User;
+import com.education.confucius.Entity.User;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -13,5 +13,5 @@ import com.education.confucius.Entity.User.User;
  */
 
 public interface UserService {
-    User getUserByName(String name);
+    User getUserByUserName(String userName);
 }
