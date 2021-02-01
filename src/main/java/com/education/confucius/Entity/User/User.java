@@ -1,4 +1,4 @@
-package com.education.confucius.Entity;
+package com.education.confucius.Entity.User;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;

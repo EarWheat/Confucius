@@ -1,6 +1,6 @@
 package com.education.confucius.Dao;
 
-import com.education.confucius.Entity.User;
+import com.education.confucius.Entity.User.User;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

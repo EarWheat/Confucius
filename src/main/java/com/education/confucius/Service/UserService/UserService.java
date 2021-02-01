@@ -1,6 +1,6 @@
 package com.education.confucius.Service.UserService;
 
-import com.education.confucius.Entity.User;
+import com.education.confucius.Entity.User.User;
 
 /**
  * @author liuzhaoluliuzhaolu

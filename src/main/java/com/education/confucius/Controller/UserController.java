@@ -1,6 +1,6 @@
 package com.education.confucius.Controller;
 
-import com.education.confucius.Entity.User;
+import com.education.confucius.Entity.User.User;
 import com.education.confucius.Service.UserService.UserServiceImpl;
 import com.pangu.Http.response.RestResult;
 import com.pangu.Http.response.ResultEnum;

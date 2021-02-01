@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.education.confucius.Dao.UserMapper">
-    <resultMap id="BaseResultMap" type="com.education.confucius.Entity.User">
+    <resultMap id="BaseResultMap" type="com.education.confucius.Entity.User.User">
         <id column="id" jdbcType="BIGINT" property="id" />
         <result column="user_id" jdbcType="BIGINT" property="userId" />
         <result column="user_name" jdbcType="VARCHAR" property="userName" />
@@ -15,7 +15,7 @@
         user_id,user_name,user_nickname,password,create_time,update_time
     </sql>
 
-    <select id="getUserByUserName" parameterType="com.education.confucius.Entity.User" resultMap="BaseResultMap">
+    <select id="getUserByUserName" parameterType="com.education.confucius.Entity.User.User" resultMap="BaseResultMap">
         select
         <include refid="base_column"/>
         from zero_user
