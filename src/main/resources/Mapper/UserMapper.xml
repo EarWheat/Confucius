@@ -21,4 +21,8 @@
         from zero_user
         where user_name = #{userName,jdbcType=VARCHAR}
     </select>
+    
+    <insert id="addUser" parameterType="com.education.confucius.Entity.User.User">
+        insert into zero_user(user_id, user_name, user_nickname, password) values (#{user_id}, #{user_name}, #{user_nickname}, #{password})
+    </insert>
 </mapper>

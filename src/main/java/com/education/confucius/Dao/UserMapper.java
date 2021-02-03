@@ -15,4 +15,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper {
     User getUserByUserName(String userName);
+    Boolean addUser(User user);
 }

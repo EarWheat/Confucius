@@ -2,9 +2,11 @@ package com.education.confucius.Service.UserService;
 
 import com.education.confucius.Dao.UserMapper;
 import com.education.confucius.Entity.User.User;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -24,5 +26,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByUserName(String userName) {
         return userMapper.getUserByUserName(userName);
+    }
+
+    @Override
+    public Boolean updateUserInfo(User user) {
+        return null;
+    }
+
+    @Override
+    public Boolean addUser(User user) {
+        if(StringUtils.isBlank(user.getUserName()) || StringUtils.isBlank(user.getPassword())){
+            return false;
+        }
+        User originalUser = userMapper.getUserByUserName(user.getUserName());
+        if(originalUser == null){
+            return userMapper.addUser(user);
+        } else {
+            return false;
+        }
     }
 }

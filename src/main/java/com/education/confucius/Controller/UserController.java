@@ -6,6 +6,7 @@ import com.pangu.Http.response.RestResult;
 import com.pangu.Http.response.ResultEnum;
 import com.pangu.Redis.RedisUtil;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,6 +56,15 @@ public class UserController {
         }
         User user = userService.getUserByUserName(name);
         return RestResult.successResult(user);
+    }
+
+    @RequestMapping("/addUser")
+    public RestResult addUser(@RequestBody User user){
+        Boolean eventResult = userService.addUser(user);
+        if(eventResult){
+            return RestResult.successResult();
+        }
+        return RestResult.failResult("add user error");
     }
 
 }

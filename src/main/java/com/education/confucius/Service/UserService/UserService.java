@@ -14,4 +14,6 @@ import com.education.confucius.Entity.User.User;
 
 public interface UserService {
     User getUserByUserName(String userName);
+    Boolean updateUserInfo(User user);
+    Boolean addUser(User user);
 }
