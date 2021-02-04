@@ -12,4 +12,6 @@ package com.education.confucius.Constants;
 public class Constants {
     public static final Integer HAVE_DUTY = 1;
     public static final Integer NO_DUTY = 0;
+    public static final String BAIDU_GET_AUTH_TOKEN_URL = "https://aip.baidubce.com/oauth/2.0/token";
+    public static final String BAIDU_GRANT_TYPE = "client_credentials";
 }
