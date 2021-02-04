@@ -22,14 +22,15 @@ public class AuthServiceImpl implements AuthService {
     private static final Logger logger = LoggerFactory.getLogger(AuthService.class);
 
     @Override
-    public String getAuthToken(AuthEnum authEnum) {
+    public JSONObject getAuthToken(AuthEnum authEnum) {
         String apiKey = authEnum.getApiKey();
         String secretKey = authEnum.getSecretKey();
         String getAccessTokenURL = Constants.BAIDU_GET_AUTH_TOKEN_URL + "?grant_type=" + Constants.BAIDU_GRANT_TYPE + "&client_id=" + apiKey + "&client_secret=" + secretKey;
         logger.info("getAccessTokenURL: {}", getAccessTokenURL);
-        String token = null;
+        JSONObject token = null;
         try {
-            token = HttpClient.doGetHttp(getAccessTokenURL,300,300);
+            String accessResult = HttpClient.doGetHttp(getAccessTokenURL,10000,10000);
+            token = JSONObject.parseObject(accessResult);
         } catch (Exception e){
             e.printStackTrace();
             logger.error("getAccessToken Error, e:{}",e.toString());

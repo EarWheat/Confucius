@@ -40,8 +40,7 @@ public class AuthController {
         } else {
             authEnum = AuthEnum.Alibaba;
         }
-        String token = authService.getAuthToken(authEnum);
-        JSONObject tokenObject = JSONObject.parseObject(token);
-        return RestResult.successResult(tokenObject);
+        JSONObject token = authService.getAuthToken(authEnum);
+        return RestResult.successResult(token);
     }
 }

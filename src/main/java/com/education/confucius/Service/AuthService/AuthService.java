@@ -13,5 +13,5 @@ import com.education.confucius.Entity.Auth.AuthEnum;
  * ------------------------------------------ *
  */
 public interface AuthService {
-    String getAuthToken(AuthEnum authEnum);
+    JSONObject getAuthToken(AuthEnum authEnum);
 }

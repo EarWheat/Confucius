@@ -14,4 +14,11 @@ public class Constants {
     public static final Integer NO_DUTY = 0;
     public static final String BAIDU_GET_AUTH_TOKEN_URL = "https://aip.baidubce.com/oauth/2.0/token";
     public static final String BAIDU_GRANT_TYPE = "client_credentials";
+    public static final String BAIDU_DIALOG_URL = "https://aip.baidubce.com/rpc/2.0/unit/service/chat";
+    public static final String BAIDU_DIALOG_SERVICE_ID = "S46282";
+    public static final String DIALOG_ANSWER_REVEAL = "抱歉，我还不知道该怎么回答你。您可以换一种问法";    // 问题兜底
+    public static final String BAIDU_DIALOG_ANSWER_RESULT_LIST = "response_list";
+    public static final String BAIDU_DIALOG_ANSWER_ACTION_LIST = "action_list";
+    public static final String BAIDU_DIALOG_ANSWER_SAY = "say";
+    public static final String BAIDU_DIALOG_ANSWER_RESULT = "result";
 }
