@@ -10,11 +10,14 @@ import com.education.confucius.Service.DialogService.DialogService;
 import com.pangu.Http.response.RestResult;
 import com.pangu.Http.response.ResultEnum;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -54,7 +57,7 @@ public class DialogController {
      * @return
      */
     @RequestMapping("/chat")
-    public RestResult<String> chat(@RequestBody DialogRequest dialogRequest){
+    public RestResult<String> chat(HttpServletRequest httpServletRequest, @RequestBody @Validated DialogRequest dialogRequest){
         Request request = dialogRequest.getRequest();
         if(StringUtils.isBlank(request.getQuery()) || StringUtils.isBlank(request.getUser_id())){
             return RestResult.failResult(ResultEnum.PARAM_EMPTY);

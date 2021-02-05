@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.UUID;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -74,7 +74,7 @@ public class DialogServiceImpl implements DialogService {
     private DialogParam getDefaultDialogParam(Request chatRequest){
         DialogParam dialogParam = new DialogParam();
         // TODO:后期接入唯一标识
-        dialogParam.setLog_id("ZeroTest_100001");
+        dialogParam.setLog_id(UUID.randomUUID().toString());
         dialogParam.setSession_id("3rsadasdasd");
         dialogParam.setService_id(Constants.BAIDU_DIALOG_SERVICE_ID);
         dialogParam.setRequest(chatRequest);
