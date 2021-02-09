@@ -9,7 +9,10 @@ import com.education.confucius.Service.AuthService.AuthService;
 import com.education.confucius.Service.DialogService.DialogService;
 import com.pangu.Http.response.RestResult;
 import com.pangu.Http.response.ResultEnum;
+import com.pangu.HttpSession.HttpSessionContext;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +34,8 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/dialog")
 @RestController
 public class DialogController {
+
+    private static final Logger logger = LoggerFactory.getLogger(DialogController.class);
 
     @Resource
     private AuthService authService;
@@ -58,6 +63,8 @@ public class DialogController {
      */
     @RequestMapping("/chat")
     public RestResult<String> chat(HttpServletRequest httpServletRequest, @RequestBody @Validated DialogRequest dialogRequest){
+        HttpSession httpSession = HttpSessionContext.getHttpSession(httpServletRequest.getSession().getId());
+        logger.info("httpSession:{}",JSONObject.toJSONString(httpSession));
         Request request = dialogRequest.getRequest();
         if(StringUtils.isBlank(request.getQuery()) || StringUtils.isBlank(request.getUser_id())){
             return RestResult.failResult(ResultEnum.PARAM_EMPTY);
