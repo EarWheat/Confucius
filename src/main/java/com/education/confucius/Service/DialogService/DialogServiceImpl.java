@@ -6,11 +6,13 @@ import com.education.confucius.Constants.Constants;
 import com.education.confucius.Entity.Dialog.Request;
 import com.education.confucius.Entity.Dialog.DialogParam;
 import com.pangu.Http.request.HttpClient;
+import com.pangu.HttpSession.HttpSessionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.UUID;
 
 /**
@@ -50,10 +52,10 @@ public class DialogServiceImpl implements DialogService {
      * @return
      */
     @Override
-    public String chat(Request chatRequest, String token){
+    public String chat(Request chatRequest, String token, String sessionId){
         String answer = null;
         try {
-            DialogParam dialogParam = getDefaultDialogParam(chatRequest);  // 获取默认聊天配置
+            DialogParam dialogParam = getDefaultDialogParam(chatRequest, sessionId);  // 获取默认聊天配置
             logger.info("dialog param :{}" ,dialogParam.toString());
             JSONObject params = JSONObject.parseObject(dialogParam.toString());
             HttpHeaders httpHeaders = new HttpHeaders();
@@ -71,11 +73,16 @@ public class DialogServiceImpl implements DialogService {
      * 获取默认聊天配置
      * @return
      */
-    private DialogParam getDefaultDialogParam(Request chatRequest){
+    private DialogParam getDefaultDialogParam(Request chatRequest, String sessionId){
         DialogParam dialogParam = new DialogParam();
-        // TODO:后期接入唯一标识
         dialogParam.setLog_id(UUID.randomUUID().toString());
-        dialogParam.setSession_id("3rsadasdasd");
+        HttpSession session = HttpSessionContext.getHttpSession(sessionId);
+        int connectTimes = (int)session.getAttribute(Constants.SESSION_CONNECT_TIME);
+        if(connectTimes == 1){  // 第一次链接
+            dialogParam.setSession("");
+        } else {
+            dialogParam.setService_id((String) session.getAttribute(Constants.BAIDU_DIALOG_RESPONSE_SESSION));
+        }
         dialogParam.setService_id(Constants.BAIDU_DIALOG_SERVICE_ID);
         dialogParam.setRequest(chatRequest);
         return dialogParam;
@@ -88,6 +95,7 @@ public class DialogServiceImpl implements DialogService {
      */
     private String getAnswer(String response){
         try {
+            logger.info("dialog answer:{}", response);
             String result = JSONObject.parseObject(response).getString(Constants.BAIDU_DIALOG_ANSWER_RESULT);
             JSONObject resultObject = JSONObject.parseObject(result);
             String responseList = resultObject.getString(Constants.BAIDU_DIALOG_ANSWER_RESULT_LIST);

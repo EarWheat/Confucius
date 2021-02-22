@@ -34,10 +34,12 @@ public class DialogParam {
     private String log_id;
 
     @JSONField
-    @NonNull
     // session保存机器人的历史会话信息，由机器人创建，客户端从上轮应答中取出并直接传递，不需要了解其内容。如果为空，则表示清空session（开发者判断用户意图已经切换且下一轮会话不需要继承上一轮会话中的词槽信息时可以把session置空，从而进行新一轮的会话）。
     //session字段内容较多，开发者可以通过传送session_id的方式节约传输流量。
     private String session_id;
+
+    @JSONField
+    private String session;
 
     @JSONField
     @NonNull

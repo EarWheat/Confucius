@@ -15,5 +15,5 @@ import com.education.confucius.Entity.Dialog.DialogParam;
  */
 public interface DialogService {
     JSONObject askQuestion(DialogParam dialogParam, String token);
-    String chat(Request chatRequest, String token);
+    String chat(Request chatRequest, String token, String sessionId);
 }
