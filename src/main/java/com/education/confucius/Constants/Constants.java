@@ -21,6 +21,6 @@ public class Constants {
     public static final String BAIDU_DIALOG_ANSWER_ACTION_LIST = "action_list";
     public static final String BAIDU_DIALOG_ANSWER_SAY = "say";
     public static final String BAIDU_DIALOG_ANSWER_RESULT = "result";
-    public static final String BAIDU_DIALOG_RESPONSE_SESSION = "baiduResponseSession";
-    public static final String SESSION_CONNECT_TIME ="session_connect_time";
+    public static final String BAIDU_DIALOG_RESPONSE_SESSION = "baidu_response_session";
+    public static final String SESSION_CONNECT_TIME ="sessionConnectTimes";
 }
