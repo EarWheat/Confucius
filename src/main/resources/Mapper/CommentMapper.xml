@@ -5,17 +5,17 @@
         <id column="id" jdbcType="BIGINT" property="id" />
         <result column="user_id" jdbcType="BIGINT" property="userId" />
         <result column="comment_id" jdbcType="VARCHAR" property="commentId" />
-        <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+        <result column="media_id" jdbcType="VARCHAR" property="mediaId" />
         <result column="content" jdbcType="VARCHAR" property="content" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     </resultMap>
 
     <sql id="base_column">
-        user_id,comment_id,parent_id,content,create_time,update_time
+        user_id,comment_id,media_id,content,create_time,update_time
     </sql>
 
-    <insert id="publicComment" parameterType="com.education.confucius.Entity.Comment.Cfrom ">
-        insert into confusion_comment(user_id, comment_id, parent_id, content) values (#{user_id}, #{comment_id}, #{parent_id}, #{content})
+    <insert id="publicComment" parameterType="com.education.confucius.Entity.Comment.Comment">
+        insert into confusion_comment(user_id, comment_id, media_id, content) values (#{userId}, #{commentId}, #{mediaId}, #{content})
     </insert>
 </mapper>

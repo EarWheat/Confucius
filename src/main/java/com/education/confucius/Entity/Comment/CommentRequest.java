@@ -17,7 +17,7 @@ import java.math.BigInteger;
 @Data
 public class CommentRequest {
     @JSONField
-    public String parentId;
+    public String mediaId;
 
     @JSONField
     public String content;

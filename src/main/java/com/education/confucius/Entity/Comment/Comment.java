@@ -23,7 +23,7 @@ public class Comment implements Serializable {
     @JSONField
     public String commentId;
     @JSONField
-    public String parentId;
+    public String mediaId;
     @JSONField
     public String content;
     @JSONField(name = "createTime")
