@@ -17,6 +17,8 @@ import java.math.BigInteger;
  */
 @Data
 public class User implements Serializable {
+    private static final long serialVersionUID = 5042847169151350716L;
+
     @JSONField(name = "userId")
     private BigInteger userId;
 
