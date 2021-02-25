@@ -1,13 +1,13 @@
 package com.education.confucius.Dao;
 
-import com.education.confucius.Entity.Comment.Comment;
+import com.education.confucius.Entity.Media.Media;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * @author liuzhaoluliuzhaolu
- * @date 2021/2/24 下午5:53
+ * @date 2021/2/25 下午4:36
  * @desc
  * @prd
  * @Modification History:
@@ -15,7 +15,7 @@ import java.util.List;
  * ------------------------------------------ *
  */
 @Mapper
-public interface CommentMapper {
-    Boolean publicComment(Comment comment);
-    List<Comment> getCommentList(String mediaId);
+public interface MediaMapper {
+    Boolean publicMedia(Media media);
+    List<Media> getMediaList();
 }

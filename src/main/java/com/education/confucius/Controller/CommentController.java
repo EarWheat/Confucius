@@ -1,5 +1,6 @@
 package com.education.confucius.Controller;
 
+import com.education.confucius.Entity.Comment.Comment;
 import com.education.confucius.Entity.Comment.CommentRequest;
 import com.education.confucius.Service.CommentService.CommentService;
 import com.pangu.Http.response.RestResult;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -34,7 +36,8 @@ public class CommentController {
      */
     @RequestMapping(value = "/getComment")
     public RestResult getComment(@RequestParam(value = "mediaId") String mediaId){
-        return RestResult.successResult();
+        List<Comment> commentList = commentService.getCommentList(mediaId);
+        return RestResult.successResult(commentList);
     }
 
 
@@ -45,7 +48,7 @@ public class CommentController {
      */
     @RequestMapping(value = "publicComment")
     public RestResult publicComment(@RequestBody CommentRequest commentRequest){
-        if(commentRequest.getUserId() == null){
+        if(commentRequest.getUserName() == null){
             return RestResult.failResult("please login first");
         }
         Boolean publicStatus = commentService.publicCommentService(commentRequest);

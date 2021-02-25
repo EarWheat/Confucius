@@ -3,7 +3,7 @@
 <mapper namespace="com.education.confucius.Dao.CommentMapper">
     <resultMap id="BaseResultMap" type="com.education.confucius.Entity.Comment.Comment">
         <id column="id" jdbcType="BIGINT" property="id" />
-        <result column="user_id" jdbcType="BIGINT" property="userId" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
         <result column="comment_id" jdbcType="VARCHAR" property="commentId" />
         <result column="media_id" jdbcType="VARCHAR" property="mediaId" />
         <result column="content" jdbcType="VARCHAR" property="content" />
@@ -12,10 +12,17 @@
     </resultMap>
 
     <sql id="base_column">
-        user_id,comment_id,media_id,content,create_time,update_time
+        user_name,comment_id,media_id,content,create_time,update_time
     </sql>
 
     <insert id="publicComment" parameterType="com.education.confucius.Entity.Comment.Comment">
-        insert into confusion_comment(user_id, comment_id, media_id, content) values (#{userId}, #{commentId}, #{mediaId}, #{content})
+        insert into confusion_comment(user_name, comment_id, media_id, content) values (#{userName}, #{commentId}, #{mediaId}, #{content})
     </insert>
+
+    <select id="getCommentList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="base_column"/>
+        from confusion_comment
+        where user_name = #{userName,jdbcType=VARCHAR}
+    </select>
 </mapper>

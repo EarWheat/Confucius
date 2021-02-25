@@ -1,4 +1,4 @@
-package com.education.confucius.Entity.Comment;
+package com.education.confucius.Entity.Media;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.math.BigInteger;
 
 /**
  * @author liuzhaoluliuzhaolu
- * @date 2021/2/24 下午5:54
+ * @date 2021/2/24 下午10:49
  * @desc
  * @prd
  * @Modification History:
@@ -16,17 +16,14 @@ import java.math.BigInteger;
  * ------------------------------------------ *
  */
 @Data
-public class Comment implements Serializable {
-    private static final long serialVersionUID = -8817472561955051311L;
-
+public class Media implements Serializable {
+    private static final long serialVersionUID = -5096481192351766311L;
     @JSONField
     public String userName;
     @JSONField
-    public String commentId;
-    @JSONField
     public String mediaId;
     @JSONField
-    public String content;
+    public String resource;
     @JSONField
     private String createTime;
     @JSONField

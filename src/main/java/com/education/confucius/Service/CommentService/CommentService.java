@@ -1,6 +1,9 @@
 package com.education.confucius.Service.CommentService;
 
+import com.education.confucius.Entity.Comment.Comment;
 import com.education.confucius.Entity.Comment.CommentRequest;
+
+import java.util.List;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -13,4 +16,5 @@ import com.education.confucius.Entity.Comment.CommentRequest;
  */
 public interface CommentService {
     Boolean publicCommentService(CommentRequest commentRequest);
+    List<Comment> getCommentList(String mediaId);
 }

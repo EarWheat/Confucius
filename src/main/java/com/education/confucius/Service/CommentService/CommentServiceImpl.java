@@ -6,6 +6,7 @@ import com.education.confucius.Entity.Comment.CommentRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -27,10 +28,15 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public Boolean publicCommentService(CommentRequest commentRequest) {
         Comment comment = new Comment();
-        comment.setUserId(commentRequest.getUserId());
+        comment.setUserName(commentRequest.getUserName());
         comment.setContent(commentRequest.getContent());
         comment.setMediaId(commentRequest.getMediaId());
         comment.setCommentId(UUID.randomUUID().toString().replace("-", ""));
         return commentMapper.publicComment(comment);
+    }
+
+    @Override
+    public List<Comment> getCommentList(String mediaId) {
+        return commentMapper.getCommentList(mediaId);
     }
 }
