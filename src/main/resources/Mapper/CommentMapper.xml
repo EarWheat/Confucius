@@ -23,6 +23,6 @@
         select
         <include refid="base_column"/>
         from confusion_comment
-        where user_name = #{userName,jdbcType=VARCHAR}
+        where media_id = #{mediaId,jdbcType=VARCHAR}
     </select>
 </mapper>

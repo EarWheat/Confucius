@@ -34,8 +34,8 @@ public class CommentController {
      * @param mediaId
      * @return
      */
-    @RequestMapping(value = "/getComment")
-    public RestResult getComment(@RequestParam(value = "mediaId") String mediaId){
+    @RequestMapping(value = "/getCommentList")
+    public RestResult getCommentList(@RequestParam(value = "mediaId") String mediaId){
         List<Comment> commentList = commentService.getCommentList(mediaId);
         return RestResult.successResult(commentList);
     }
@@ -46,7 +46,7 @@ public class CommentController {
      * @param commentRequest
      * @return
      */
-    @RequestMapping(value = "publicComment")
+    @RequestMapping(value = "/publicComment")
     public RestResult publicComment(@RequestBody CommentRequest commentRequest){
         if(commentRequest.getUserName() == null){
             return RestResult.failResult("please login first");
