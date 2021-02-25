@@ -20,7 +20,6 @@ public class Request {
     private String query;
 
     @JSONField
-    @NonNull
     private String user_id;
 
     public Request() {

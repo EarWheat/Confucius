@@ -66,7 +66,7 @@ public class DialogController {
         HttpSession httpSession = HttpSessionContext.getHttpSession(httpServletRequest.getSession().getId());
         logger.info("httpSession:{}",JSONObject.toJSONString(httpSession));
         Request request = dialogRequest.getRequest();
-        if(StringUtils.isBlank(request.getQuery()) || StringUtils.isBlank(request.getUser_id())){
+        if(StringUtils.isBlank(request.getQuery())){
             return RestResult.failResult(ResultEnum.PARAM_EMPTY);
         }
         String answer = dialogService.chat(request, dialogRequest.getToken(), httpSession.getId());

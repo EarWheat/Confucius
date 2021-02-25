@@ -62,7 +62,7 @@ public class DialogServiceImpl implements DialogService {
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.add("Content-Type", "application/json");
             String requestUrl = Constants.BAIDU_DIALOG_URL + "?access_token=" + token;
-            String response = HttpClient.doPostJsonHttp(requestUrl,params, httpHeaders, 2000,2000);
+            String response = HttpClient.doPostJsonHttp(requestUrl, params, httpHeaders, 2000,2000);
             answer = getAnswer(response, sessionId);
         } catch (Exception e){
             logger.error("get dialog answer error:{}", e.toString());
@@ -75,6 +75,7 @@ public class DialogServiceImpl implements DialogService {
      * @return
      */
     private DialogParam getDefaultDialogParam(Request chatRequest, String sessionId){
+        chatRequest.setUser_id("admin");    // TODO:默认询问用户
         DialogParam dialogParam = new DialogParam();
         dialogParam.setLog_id(UUID.randomUUID().toString());
         HttpSession session = HttpSessionContext.getHttpSession(sessionId);
