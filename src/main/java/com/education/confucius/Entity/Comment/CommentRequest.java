@@ -23,6 +23,6 @@ public class CommentRequest {
     public String content;
 
     @JSONField
-    public String userName;
+    public String userId;
 
 }

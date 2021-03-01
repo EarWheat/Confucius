@@ -20,13 +20,15 @@ public class Comment implements Serializable {
     private static final long serialVersionUID = -8817472561955051311L;
 
     @JSONField
-    public String userName;
+    public String userId;
     @JSONField
     public String commentId;
     @JSONField
     public String mediaId;
     @JSONField
     public String content;
+    @JSONField
+    public String avatar;
     @JSONField
     private String createTime;
     @JSONField

@@ -3,26 +3,34 @@
 <mapper namespace="com.education.confucius.Dao.UserMapper">
     <resultMap id="BaseResultMap" type="com.education.confucius.Entity.User.User">
         <id column="id" jdbcType="BIGINT" property="id" />
-        <result column="user_id" jdbcType="BIGINT" property="userId" />
+        <result column="user_id" jdbcType="VARCHAR" property="userId" />
         <result column="user_name" jdbcType="VARCHAR" property="userName" />
         <result column="user_nickname" jdbcType="VARCHAR" property="userNickName" />
         <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="avatar" jdbcType="VARCHAR" property="avatar" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     </resultMap>
 
     <sql id="base_column">
-        user_id,user_name,user_nickname,password,create_time,update_time
+        user_id,user_name,user_nickname,password,avatar,create_time,update_time
     </sql>
 
     <select id="getUserByUserName" parameterType="com.education.confucius.Entity.User.User" resultMap="BaseResultMap">
         select
         <include refid="base_column"/>
-        from zero_user
+        from confucius_user
         where user_name = #{userName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getUserByUserId" parameterType="com.education.confucius.Entity.User.User" resultMap="BaseResultMap">
+        select
+        <include refid="base_column"/>
+        from confucius_user
+        where user_id = #{userId,jdbcType=VARCHAR}
     </select>
     
     <insert id="addUser" parameterType="com.education.confucius.Entity.User.User">
-        insert into zero_user(user_id, user_name, user_nickname, password) values (#{user_id}, #{user_name}, #{user_nickname}, #{password})
+        insert into confucius_user(user_id, user_name, user_nickname, password, avatar) values (#{user_id}, #{user_name}, #{user_nickname}, #{password}, #{avatar})
     </insert>
 </mapper>

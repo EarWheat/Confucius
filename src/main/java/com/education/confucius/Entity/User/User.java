@@ -19,21 +19,24 @@ import java.math.BigInteger;
 public class User implements Serializable {
     private static final long serialVersionUID = 5042847169151350716L;
 
-    @JSONField(name = "userId")
-    private BigInteger userId;
+    @JSONField
+    private String userId;
 
-    @JSONField(name = "userName")
+    @JSONField
     private String userName;
 
-    @JSONField(name = "password")
+    @JSONField
+    private String avatar;
+
+    @JSONField
     private String password;
 
-    @JSONField(name = "userNickName")
+    @JSONField
     private String userNickName;
 
-    @JSONField(name = "createTime")
+    @JSONField
     private String createTime;
 
-    @JSONField(name = "updateTime")
+    @JSONField
     private String updateTime;
 }

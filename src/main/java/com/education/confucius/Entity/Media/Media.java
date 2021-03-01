@@ -19,7 +19,7 @@ import java.math.BigInteger;
 public class Media implements Serializable {
     private static final long serialVersionUID = -5096481192351766311L;
     @JSONField
-    public String userName;
+    public String userId;
     @JSONField
     public String mediaId;
     @JSONField

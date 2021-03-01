@@ -3,7 +3,7 @@
 <mapper namespace="com.education.confucius.Dao.MediaMapper">
     <resultMap id="BaseResultMap" type="com.education.confucius.Entity.Media.Media">
         <id column="id" jdbcType="BIGINT" property="id" />
-        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="user_id" jdbcType="VARCHAR" property="userId" />
         <result column="media_id" jdbcType="VARCHAR" property="mediaId" />
         <result column="resource" jdbcType="VARCHAR" property="resource" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -11,16 +11,16 @@
     </resultMap>
 
     <sql id="base_column">
-        user_name,media_id,resource,create_time,update_time
+        user_id,media_id,resource,create_time,update_time
     </sql>
 
     <insert id="publicMedia" parameterType="com.education.confucius.Entity.Media.Media">
-        insert into confusion_media(user_name, media_id, resource) values (#{userName}, #{mediaId}, #{resource})
+        insert into confucius_media(user_id, media_id, resource) values (#{userId}, #{mediaId}, #{resource})
     </insert>
 
     <select id="getMediaList" resultMap="BaseResultMap">
         select
         <include refid="base_column"/>
-        from confusion_media;
+        from confucius_media;
     </select>
 </mapper>

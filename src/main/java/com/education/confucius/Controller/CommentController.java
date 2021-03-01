@@ -3,6 +3,7 @@ package com.education.confucius.Controller;
 import com.education.confucius.Entity.Comment.Comment;
 import com.education.confucius.Entity.Comment.CommentRequest;
 import com.education.confucius.Service.CommentService.CommentService;
+import com.education.confucius.Service.UserService.UserService;
 import com.pangu.Http.response.RestResult;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -29,6 +30,9 @@ public class CommentController {
 
     @Resource
     public CommentService commentService;
+
+    @Resource
+    public UserService userService;
     /**
      * 获取对应评论
      * @param mediaId
@@ -37,6 +41,7 @@ public class CommentController {
     @RequestMapping(value = "/getCommentList")
     public RestResult getCommentList(@RequestParam(value = "mediaId") String mediaId){
         List<Comment> commentList = commentService.getCommentList(mediaId);
+        commentList.forEach(comment -> comment.setAvatar(userService.getUserByUserId(comment.getUserId()).getAvatar()));
         return RestResult.successResult(commentList);
     }
 
@@ -48,7 +53,7 @@ public class CommentController {
      */
     @RequestMapping(value = "/publicComment")
     public RestResult publicComment(@RequestBody CommentRequest commentRequest){
-        if(commentRequest.getUserName() == null){
+        if(commentRequest.getUserId() == null){
             return RestResult.failResult("please login first");
         }
         Boolean publicStatus = commentService.publicCommentService(commentRequest);

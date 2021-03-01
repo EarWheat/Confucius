@@ -2,6 +2,7 @@ package com.education.confucius.Service.UserService;
 
 import com.education.confucius.Dao.UserMapper;
 import com.education.confucius.Entity.User.User;
+import com.pangu.Redis.RedisUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByUserName(String userName) {
         return userMapper.getUserByUserName(userName);
+    }
+
+    @Override
+    public User getUserByUserId(String userId) {
+        //TODO:Redis提升性能
+        return userMapper.getUserByUserId(userId);
     }
 
     @Override
