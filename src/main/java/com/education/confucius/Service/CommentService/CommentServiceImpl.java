@@ -28,7 +28,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public Boolean publicCommentService(CommentRequest commentRequest) {
         Comment comment = new Comment();
-        comment.setUserId(commentRequest.getUserId());
+        comment.setUserId(commentRequest.getUserName());
         comment.setContent(commentRequest.getContent());
         comment.setMediaId(commentRequest.getMediaId());
         comment.setCommentId(UUID.randomUUID().toString().replace("-", ""));

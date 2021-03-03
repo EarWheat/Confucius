@@ -53,7 +53,7 @@ public class CommentController {
      */
     @RequestMapping(value = "/publicComment")
     public RestResult publicComment(@RequestBody CommentRequest commentRequest){
-        if(commentRequest.getUserId() == null){
+        if(commentRequest.getUserName() == null){
             return RestResult.failResult("please login first");
         }
         Boolean publicStatus = commentService.publicCommentService(commentRequest);
