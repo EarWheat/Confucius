@@ -1,5 +1,0 @@
-2021-02-04 18:59:04||INFO ||c.e.c.ConfuciusApplicationTests:55||Starting ConfuciusApplicationTests on bogon with PID 93217 (started by didi in /Users/didi/IdeaProjects/Confucius)
-2021-02-04 18:59:04||INFO ||c.e.c.ConfuciusApplicationTests:651||No active profile set, falling back to default profiles: default
-2021-02-04 18:59:08||INFO ||o.s.s.c.ThreadPoolTaskExecutor:181||Initializing ExecutorService 'applicationTaskExecutor'
-2021-02-04 18:59:09||INFO ||c.e.c.ConfuciusApplicationTests:61||Started ConfuciusApplicationTests in 6.348 seconds (JVM running for 7.908)
-2021-02-04 18:59:10||INFO ||o.s.s.c.ThreadPoolTaskExecutor:218||Shutting down ExecutorService 'applicationTaskExecutor'

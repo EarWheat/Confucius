@@ -23,4 +23,5 @@ public class Constants {
     public static final String BAIDU_DIALOG_ANSWER_RESULT = "result";
     public static final String BAIDU_DIALOG_RESPONSE_SESSION = "baidu_response_session";
     public static final String SESSION_CONNECT_TIME ="sessionConnectTimes";
+    public static final String DIALOG_REDIS_KEY = "dialog_redis_";
 }

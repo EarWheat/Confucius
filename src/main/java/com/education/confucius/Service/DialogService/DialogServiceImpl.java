@@ -7,6 +7,8 @@ import com.education.confucius.Entity.Dialog.Request;
 import com.education.confucius.Entity.Dialog.DialogParam;
 import com.pangu.Http.request.HttpClient;
 import com.pangu.HttpSession.HttpSessionContext;
+import com.pangu.Redis.RedisUtil;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -53,17 +55,17 @@ public class DialogServiceImpl implements DialogService {
      * @return
      */
     @Override
-    public String chat(Request chatRequest, String token, String sessionId){
+    public String chat(Request chatRequest, String token){
         String answer = Constants.DIALOG_ANSWER_REVEAL;
         try {
-            DialogParam dialogParam = getDefaultDialogParam(chatRequest, sessionId);  // 获取默认聊天配置
+            DialogParam dialogParam = getDefaultDialogParam(chatRequest);  // 获取默认聊天配置
             logger.info("dialog param :{}" ,dialogParam.toString());
             JSONObject params = JSONObject.parseObject(dialogParam.toString());
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.add("Content-Type", "application/json");
             String requestUrl = Constants.BAIDU_DIALOG_URL + "?access_token=" + token;
             String response = HttpClient.doPostJsonHttp(requestUrl, params, httpHeaders, 2000,2000);
-            answer = getAnswer(response, sessionId);
+            answer = getAnswer(response, chatRequest.getUser_id());
         } catch (Exception e){
             logger.error("get dialog answer error:{}", e.toString());
         }
@@ -74,14 +76,13 @@ public class DialogServiceImpl implements DialogService {
      * 获取默认聊天配置
      * @return
      */
-    private DialogParam getDefaultDialogParam(Request chatRequest, String sessionId){
-        chatRequest.setUser_id("admin");    // TODO:默认询问用户
+    private DialogParam getDefaultDialogParam(Request chatRequest){
         DialogParam dialogParam = new DialogParam();
         dialogParam.setLog_id(UUID.randomUUID().toString());
-        HttpSession session = HttpSessionContext.getHttpSession(sessionId);
-        String requestSessionId = (String) Optional.ofNullable(session.getAttribute(Constants.BAIDU_DIALOG_RESPONSE_SESSION)).orElse("");
+//        HttpSession session = HttpSessionContext.getHttpSession(sessionId);
+        String requestSessionId = Optional.ofNullable(RedisUtil.get(Constants.DIALOG_REDIS_KEY.concat(chatRequest.getUser_id()))).orElse("");
         dialogParam.setSession_id(requestSessionId);
-        logger.info("dialog param session id: {}, request session id:{}", dialogParam.getSession_id(),session.getAttribute(Constants.BAIDU_DIALOG_RESPONSE_SESSION));
+        logger.info("dialog param request session id:{}", dialogParam.getSession_id());
         dialogParam.setService_id(Constants.BAIDU_DIALOG_SERVICE_ID);
         dialogParam.setRequest(chatRequest);
         return dialogParam;
@@ -92,16 +93,16 @@ public class DialogServiceImpl implements DialogService {
      * @param response
      * @return
      */
-    private String getAnswer(String response, String sessionId){
+    private String getAnswer(String response, String userId){
         try {
             logger.info("dialog answer:{}", response);
             String result = JSONObject.parseObject(response).getString(Constants.BAIDU_DIALOG_ANSWER_RESULT);
             JSONObject resultObject = JSONObject.parseObject(result);
             String responseList = resultObject.getString(Constants.BAIDU_DIALOG_ANSWER_RESULT_LIST);
             String responseSessionId = resultObject.getString("session_id");
-            HttpSession session = HttpSessionContext.getHttpSession(sessionId);
-            session.setAttribute(Constants.BAIDU_DIALOG_RESPONSE_SESSION, responseSessionId);
-            logger.info("session content : {}, id : {}", session.getAttribute(Constants.BAIDU_DIALOG_RESPONSE_SESSION), session.getId());
+//            HttpSession session = HttpSessionContext.getHttpSession(sessionId);
+//            session.setAttribute(Constants.BAIDU_DIALOG_RESPONSE_SESSION, responseSessionId);
+            RedisUtil.setex(Constants.DIALOG_REDIS_KEY.concat(userId),600, responseSessionId);
             JSONArray answerArray = JSONArray.parseArray(responseList);
             if(answerArray.size() > 0){
                 JSONObject bestAnswer = answerArray.getJSONObject(0);

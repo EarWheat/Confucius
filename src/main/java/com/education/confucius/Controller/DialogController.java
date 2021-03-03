@@ -10,6 +10,7 @@ import com.education.confucius.Service.DialogService.DialogService;
 import com.pangu.Http.response.RestResult;
 import com.pangu.Http.response.ResultEnum;
 import com.pangu.HttpSession.HttpSessionContext;
+import com.pangu.Redis.RedisUtil;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,13 +64,14 @@ public class DialogController {
      */
     @RequestMapping("/chat")
     public RestResult<String> chat(HttpServletRequest httpServletRequest, @RequestBody @Validated DialogRequest dialogRequest){
-        HttpSession httpSession = HttpSessionContext.getHttpSession(httpServletRequest.getSession().getId());
-        logger.info("httpSession:{}",JSONObject.toJSONString(httpSession));
+//        HttpSession httpSession = HttpSessionContext.getHttpSession(httpServletRequest.getSession().getId());
+//        logger.info("httpSession:{}",JSONObject.toJSONString(httpSession));
         Request request = dialogRequest.getRequest();
         if(StringUtils.isBlank(request.getQuery())){
             return RestResult.failResult(ResultEnum.PARAM_EMPTY);
         }
-        String answer = dialogService.chat(request, dialogRequest.getToken(), httpSession.getId());
+        String answer = dialogService.chat(request, dialogRequest.getToken());
+//        RedisUtil.set("liuzhaolu","hello");
         return RestResult.successResult(answer);
     }
 }
