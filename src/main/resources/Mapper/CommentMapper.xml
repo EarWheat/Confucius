@@ -16,7 +16,7 @@
     </sql>
 
     <insert id="publicComment" parameterType="com.education.confucius.Entity.Comment.Comment">
-        insert into confucius_comment(user_id, comment_id, media_id, content) values (#{userId}, #{commentId}, #{mediaId}, #{content})
+        insert into confucius_comment(user_id, comment_id, media_id, content, create_time) values (#{userId}, #{commentId}, #{mediaId}, #{content}, #{createTime})
     </insert>
 
     <select id="getCommentList" parameterType="java.lang.String" resultMap="BaseResultMap">

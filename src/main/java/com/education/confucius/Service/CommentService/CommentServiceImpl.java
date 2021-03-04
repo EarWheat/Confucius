@@ -6,6 +6,8 @@ import com.education.confucius.Entity.Comment.CommentRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,6 +34,8 @@ public class CommentServiceImpl implements CommentService {
         comment.setContent(commentRequest.getContent());
         comment.setMediaId(commentRequest.getMediaId());
         comment.setCommentId(UUID.randomUUID().toString().replace("-", ""));
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        comment.setCreateTime(simpleDateFormat.format(new Date()));
         return commentMapper.publicComment(comment);
     }
 
