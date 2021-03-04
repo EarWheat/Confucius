@@ -36,6 +36,7 @@ public class CommentServiceImpl implements CommentService {
         comment.setCommentId(UUID.randomUUID().toString().replace("-", ""));
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         comment.setCreateTime(simpleDateFormat.format(new Date()));
+        comment.setUpdateTime(simpleDateFormat.format(new Date()));
         return commentMapper.publicComment(comment);
     }
 
