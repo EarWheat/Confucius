@@ -121,8 +121,8 @@ public class DialogServiceImpl implements DialogService {
                             newsTitles.add(temp.getString(Constants.BAIDU_DIALOG_ANSWER_NEWS_TITLE));
                         }
                         StringBuilder stringBuilder = new StringBuilder(answerResult);
-                        stringBuilder.append("</br>");
-                        newsTitles.forEach(n -> stringBuilder.append(n).append("</br>"));
+                        stringBuilder.append("<br/>");
+                        newsTitles.forEach(n -> stringBuilder.append(n).append("<br/>"));
                         answerResult = stringBuilder.toString();
                     }
                     return answerResult;
