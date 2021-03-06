@@ -100,7 +100,7 @@ public class DialogServiceImpl implements DialogService {
             JSONObject resultObject = JSONObject.parseObject(result);
             String responseList = resultObject.getString(Constants.BAIDU_DIALOG_ANSWER_RESULT_LIST);
             String responseSessionId = resultObject.getString(Constants.BAIDU_DIALOG_SESSION_ID);
-//            RedisUtil.setex(Constants.DIALOG_REDIS_KEY.concat(userId),600, responseSessionId);
+            RedisUtil.setex(Constants.DIALOG_REDIS_KEY.concat(userId),600, responseSessionId);
             JSONArray answerArray = JSONArray.parseArray(responseList);
             if(answerArray.size() > 0){
                 JSONObject bestAnswer = answerArray.getJSONObject(0);
