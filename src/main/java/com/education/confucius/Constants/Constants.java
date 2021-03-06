@@ -16,10 +16,16 @@ public class Constants {
     public static final String BAIDU_GRANT_TYPE = "client_credentials";
     public static final String BAIDU_DIALOG_URL = "https://aip.baidubce.com/rpc/2.0/unit/service/chat";
     public static final String BAIDU_DIALOG_SERVICE_ID = "S46282";
+    public static final String BAIDU_DIALOG_SESSION_ID = "session_id";
     public static final String DIALOG_ANSWER_REVEAL = "抱歉，我还不知道该怎么回答你。您可以换一种问法";    // 问题兜底
     public static final String BAIDU_DIALOG_ANSWER_RESULT_LIST = "response_list";
     public static final String BAIDU_DIALOG_ANSWER_ACTION_LIST = "action_list";
+    public static final String BAIDU_DIALOG_ANSWER_NEWS_LIST = "news_list";
     public static final String BAIDU_DIALOG_ANSWER_SAY = "say";
+    public static final String BAIDU_DIALOG_ANSWER_ACTION_ID = "action_id";
+    public static final String BAIDU_DIALOG_ANSWER_NEWS = "news";
+    public static final String BAIDU_DIALOG_ANSWER_NEWS_TITLE = "title";
+    public static final String BAIDU_DIALOG_ANSWER_CUSTOM_REPLAY = "custom_reply";
     public static final String BAIDU_DIALOG_ANSWER_RESULT = "result";
     public static final String BAIDU_DIALOG_RESPONSE_SESSION = "baidu_response_session";
     public static final String SESSION_CONNECT_TIME ="sessionConnectTimes";
