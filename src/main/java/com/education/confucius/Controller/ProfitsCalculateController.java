@@ -1,5 +1,6 @@
 package com.education.confucius.Controller;
 
+import com.education.confucius.Entity.My.Flag.Flag;
 import com.education.confucius.Entity.My.Gem.GemRequest;
 import com.pangu.Http.response.RestResult;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,10 +18,21 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/my")
-public class GemCalculateController {
+public class ProfitsCalculateController {
 
-    @RequestMapping(value = "calculateProfits")
-    public RestResult calculateProfits(@RequestBody GemRequest gemRequest){
+    /**
+     * 宝石收益
+     * @param gemRequest
+     * @return
+     */
+    @RequestMapping(value = "gem")
+    public RestResult calculateGemProfits(@RequestBody GemRequest gemRequest){
+
+        return RestResult.successResult();
+    }
+
+    @RequestMapping(value = "flag")
+    public RestResult calculateFlagProfits(@RequestBody Flag gemRequest){
 
         return RestResult.successResult();
     }
