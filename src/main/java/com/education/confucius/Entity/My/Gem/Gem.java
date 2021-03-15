@@ -1,6 +1,7 @@
 package com.education.confucius.Entity.My.Gem;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.education.confucius.Entity.My.BaseExpend;
 import lombok.Data;
 
 /**
@@ -13,7 +14,7 @@ import lombok.Data;
  * ------------------------------------------ *
  */
 @Data
-public class Gem {
+public class Gem extends BaseExpend {
     @JSONField(name = "name")
     public String name;
 

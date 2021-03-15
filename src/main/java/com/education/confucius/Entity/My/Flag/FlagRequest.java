@@ -1,5 +1,6 @@
 package com.education.confucius.Entity.My.Flag;
 
+import com.education.confucius.Entity.My.BaseExpend;
 import lombok.Data;
 
 /**
@@ -12,10 +13,9 @@ import lombok.Data;
  * ------------------------------------------ *
  */
 @Data
-public class FlagRequest {
+public class FlagRequest extends BaseExpend {
     public String CA;
     public String AL;
     public String CS;
     public String ZZ;
-
 }
