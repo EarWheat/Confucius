@@ -3,6 +3,7 @@ package com.education.confucius.Entity.My.Flag;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.education.confucius.Entity.My.BaseExpend;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -18,9 +19,13 @@ public class Flag extends BaseExpend {
     @JSONField
     private FlagEnum color;
     @JSONField
+    @Value("${my.flag.selling-price:}")
     public Long sellingPrice;
     @JSONField
+    @Value("${my.flag.purchase-price:}")
     public Long purchasePrice;
     @JSONField
     public Long profits;
+    @JSONField
+    public Long nums;
 }
