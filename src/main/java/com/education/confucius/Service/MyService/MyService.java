@@ -2,10 +2,8 @@ package com.education.confucius.Service.MyService;
 
 import com.alibaba.fastjson.JSONObject;
 import com.education.confucius.Entity.My.Flag.Flag;
-import com.education.confucius.Entity.My.Flag.FlagRequest;
+import com.education.confucius.Entity.My.Flag.FlagSellingRecord;
 import com.education.confucius.Entity.My.Gem.GemRequest;
-import com.education.confucius.Entity.My.Profits;
-import com.education.confucius.Entity.My.Summary;
 import org.springframework.stereotype.Service;
 
 import java.util.Properties;
@@ -19,9 +17,8 @@ import java.util.Properties;
  * Date         Author          Description
  * ------------------------------------------ *
  */
-@Service
 public interface MyService {
     JSONObject calculateGemProfits(GemRequest gemRequest);
     JSONObject calculateFlagProfits(Flag flag);
-    Boolean recordSelling(FlagRequest flagRequest);
+    Boolean recordSelling(FlagSellingRecord flagSellingRecord);
 }

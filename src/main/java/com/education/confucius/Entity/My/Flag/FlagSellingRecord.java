@@ -20,6 +20,8 @@ public class FlagSellingRecord implements Serializable {
     private static final long serialVersionUID = 1473645666621141L;
 
     @JSONField
+    public String recordId;
+    @JSONField
     public Integer redFlagNum;
     @JSONField
     public Integer greenFlagNum;

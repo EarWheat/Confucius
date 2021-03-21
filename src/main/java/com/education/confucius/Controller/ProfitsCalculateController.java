@@ -2,10 +2,8 @@ package com.education.confucius.Controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.education.confucius.Entity.My.Flag.Flag;
-import com.education.confucius.Entity.My.Flag.FlagRequest;
+import com.education.confucius.Entity.My.Flag.FlagSellingRecord;
 import com.education.confucius.Entity.My.Gem.GemRequest;
-import com.education.confucius.Entity.My.Profits;
-import com.education.confucius.Entity.My.Summary;
 import com.education.confucius.Service.MyService.MyService;
 import com.pangu.Http.response.RestResult;
 import com.pangu.Http.response.ResultEnum;
@@ -49,8 +47,8 @@ public class ProfitsCalculateController {
     }
 
     @RequestMapping(value = "/sellingFlag")
-    public RestResult recordSelling(@RequestBody FlagRequest flagRequest){
-        Boolean result = myService.recordSelling(flagRequest);
+    public RestResult recordSelling(@RequestBody FlagSellingRecord flagSellingRecord){
+        Boolean result = myService.recordSelling(flagSellingRecord);
         return result ? RestResult.successResult() : RestResult.failResult(ResultEnum.EXCEPTION);
     }
 }

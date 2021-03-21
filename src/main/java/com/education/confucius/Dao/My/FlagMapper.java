@@ -1,6 +1,7 @@
 package com.education.confucius.Dao.My;
 
 import com.education.confucius.Entity.My.Flag.Flag;
+import com.education.confucius.Entity.My.Flag.FlagSellingRecord;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -16,6 +17,5 @@ import java.util.List;
  */
 @Mapper
 public interface FlagMapper {
-    List<Flag> getRecordByCreateTime();
-    boolean addRecord();
+    Boolean addRecord(FlagSellingRecord flagSellingRecord);
 }

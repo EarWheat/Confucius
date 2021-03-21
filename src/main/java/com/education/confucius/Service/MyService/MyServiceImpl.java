@@ -3,12 +3,16 @@ package com.education.confucius.Service.MyService;
 import com.alibaba.fastjson.JSONObject;
 import com.education.confucius.Dao.My.FlagMapper;
 import com.education.confucius.Entity.My.Flag.Flag;
-import com.education.confucius.Entity.My.Flag.FlagRequest;
+import com.education.confucius.Entity.My.Flag.FlagSellingRecord;
 import com.education.confucius.Entity.My.Gem.GemRequest;
 import com.education.confucius.Entity.My.Profits;
 import com.education.confucius.Service.MyBaseService.BaseService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -19,6 +23,7 @@ import javax.annotation.Resource;
  * Date         Author          Description
  * ------------------------------------------ *
  */
+@Service
 public class MyServiceImpl extends BaseService implements MyService {
 
     @Resource
@@ -47,7 +52,12 @@ public class MyServiceImpl extends BaseService implements MyService {
     }
 
     @Override
-    public Boolean recordSelling(FlagRequest flagRequest) {
-        return flagMapper.addRecord();
+    public Boolean recordSelling(FlagSellingRecord flagSellingRecord) {
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        flagSellingRecord.setCreateTime(simpleDateFormat.format(date));
+        flagSellingRecord.setUpdateTime(simpleDateFormat.format(date));
+        flagSellingRecord.setRecordId(UUID.randomUUID().toString().replace("-", ""));
+        return flagMapper.addRecord(flagSellingRecord);
     }
 }

@@ -34,9 +34,10 @@ public class CommentServiceImpl implements CommentService {
         comment.setContent(commentRequest.getContent());
         comment.setMediaId(commentRequest.getMediaId());
         comment.setCommentId(UUID.randomUUID().toString().replace("-", ""));
+        Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        comment.setCreateTime(simpleDateFormat.format(new Date()));
-        comment.setUpdateTime(simpleDateFormat.format(new Date()));
+        comment.setCreateTime(simpleDateFormat.format(date));
+        comment.setUpdateTime(simpleDateFormat.format(date));
         return commentMapper.publicComment(comment);
     }
 
