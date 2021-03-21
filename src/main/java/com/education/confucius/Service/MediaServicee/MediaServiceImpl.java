@@ -1,6 +1,6 @@
 package com.education.confucius.Service.MediaServicee;
 
-import com.education.confucius.Dao.MediaMapper;
+import com.education.confucius.Dao.Confucius.MediaMapper;
 import com.education.confucius.Entity.Media.Media;
 import org.springframework.stereotype.Service;
 

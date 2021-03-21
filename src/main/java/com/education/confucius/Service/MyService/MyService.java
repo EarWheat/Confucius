@@ -1,6 +1,8 @@
 package com.education.confucius.Service.MyService;
 
+import com.alibaba.fastjson.JSONObject;
 import com.education.confucius.Entity.My.Flag.Flag;
+import com.education.confucius.Entity.My.Flag.FlagRequest;
 import com.education.confucius.Entity.My.Gem.GemRequest;
 import com.education.confucius.Entity.My.Profits;
 import com.education.confucius.Entity.My.Summary;
@@ -19,6 +21,7 @@ import java.util.Properties;
  */
 @Service
 public interface MyService {
-    public Summary calculateGemProfits(GemRequest gemRequest);
-    public Summary calculateFlagProfits(Flag flag);
+    JSONObject calculateGemProfits(GemRequest gemRequest);
+    JSONObject calculateFlagProfits(Flag flag);
+    Boolean recordSelling(FlagRequest flagRequest);
 }

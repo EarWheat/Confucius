@@ -1,6 +1,6 @@
 package com.education.confucius.Service.CommentService;
 
-import com.education.confucius.Dao.CommentMapper;
+import com.education.confucius.Dao.Confucius.CommentMapper;
 import com.education.confucius.Entity.Comment.Comment;
 import com.education.confucius.Entity.Comment.CommentRequest;
 import org.springframework.stereotype.Service;

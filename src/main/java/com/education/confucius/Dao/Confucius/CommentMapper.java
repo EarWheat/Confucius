@@ -1,4 +1,4 @@
-package com.education.confucius.Dao;
+package com.education.confucius.Dao.Confucius;
 
 import com.education.confucius.Entity.Comment.Comment;
 import org.apache.ibatis.annotations.Mapper;

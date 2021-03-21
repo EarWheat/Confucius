@@ -1,5 +1,6 @@
 package com.education.confucius.Entity.My.Flag;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.education.confucius.Entity.My.BaseExpend;
 import lombok.Data;
 
@@ -14,8 +15,12 @@ import lombok.Data;
  */
 @Data
 public class FlagRequest extends BaseExpend {
-    public String CA;
-    public String AL;
-    public String CS;
-    public String ZZ;
+    @JSONField
+    public String RED;
+    @JSONField
+    public String YELLOW;
+    @JSONField
+    public String GREEN;
+    @JSONField
+    public String WHITE;
 }

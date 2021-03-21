@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.education.confucius.Dao.My.FlagMapper">
+    <resultMap id="BaseResultMap" type="com.education.confucius.Entity.My.Flag.FlagSellingRecord">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="red_flag_num" jdbcType="BIGINT" property="redFlagNum" />
+        <result column="green_flag_num" jdbcType="BIGINT" property="greenFlagNum" />
+        <result column="yellow_flag_num" jdbcType="BIGINT" property="yellowFlagNum" />
+        <result column="white_flag_num" jdbcType="BIGINT" property="whiteFlagNum" />
+        <result column="blue_flag_num" jdbcType="BIGINT" property="blueFlagNum" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+
+    <sql id="base_column">
+        red_flag_num,green_flag_num,yellow_flag_num,white_flag_num,blue_flag_num,create_time,update_time
+    </sql>
+
+    <insert id="addRecord" parameterType="com.education.confucius.Entity.My.Flag.FlagSellingRecord">
+        insert into flag_selling_record(red_flag_num, green_flag_num, yellow_flag_num, white_flag_num, blue_flag_num, create_time)
+        values (#{red_flag_num}, #{green_flag_num}, #{yellow_flag_num}, #{white_flag_num}, #{blue_flag_num}, #{create_time})
+    </insert>
+</mapper>
