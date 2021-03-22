@@ -14,10 +14,10 @@
     </resultMap>
 
     <sql id="base_column">
-        recordId,red_flag_num,green_flag_num,yellow_flag_num,white_flag_num,blue_flag_num,create_time,update_time
+        record_id,red_flag_num,green_flag_num,yellow_flag_num,white_flag_num,blue_flag_num,create_time,update_time
     </sql>
 
     <insert id="addRecord" parameterType="com.education.confucius.Entity.My.Flag.FlagSellingRecord">
-        insert into flag_selling_record(recordId,red_flag_num, green_flag_num, yellow_flag_num, white_flag_num, blue_flag_num, create_time) values (#{recordId}, #{red_flag_num}, #{green_flag_num}, #{yellow_flag_num}, #{white_flag_num}, #{blue_flag_num}, #{create_time})
+        insert into flag_selling_record(record_id,red_flag_num, green_flag_num, yellow_flag_num, white_flag_num, blue_flag_num, create_time) values (#{recordId}, #{redFlagNum}, #{greenFlagNum}, #{yellowFlagNum}, #{whiteFlagNum}, #{blueFlagNum}, #{createTime})
     </insert>
 </mapper>

@@ -22,15 +22,15 @@ public class FlagSellingRecord implements Serializable {
     @JSONField
     public String recordId;
     @JSONField
-    public Integer redFlagNum;
+    public Integer redFlagNum = 0;
     @JSONField
-    public Integer greenFlagNum;
+    public Integer greenFlagNum = 0;
     @JSONField
-    public Integer yellowFlagNum;
+    public Integer yellowFlagNum = 0;
     @JSONField
-    public Integer whiteFlagNum;
+    public Integer whiteFlagNum = 0;
     @JSONField
-    public Integer blueFlagNum;
+    public Integer blueFlagNum = 0;
     @JSONField
     private String createTime;
     @JSONField
