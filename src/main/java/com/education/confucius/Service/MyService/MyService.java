@@ -21,4 +21,5 @@ public interface MyService {
     JSONObject calculateGemProfits(GemRequest gemRequest);
     JSONObject calculateFlagProfits(Flag flag);
     Boolean recordSelling(FlagSellingRecord flagSellingRecord);
+    JSONObject getSummary(Long hour);
 }

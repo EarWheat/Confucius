@@ -18,4 +18,5 @@ import java.util.List;
 @Mapper
 public interface FlagMapper {
     Boolean addRecord(FlagSellingRecord flagSellingRecord);
+    List<FlagSellingRecord> getRecordList(String startTime, String endTime);
 }

@@ -20,4 +20,12 @@
     <insert id="addRecord" parameterType="com.education.confucius.Entity.My.Flag.FlagSellingRecord">
         insert into flag_selling_record(record_id,red_flag_num, green_flag_num, yellow_flag_num, white_flag_num, blue_flag_num, create_time) values (#{recordId}, #{redFlagNum}, #{greenFlagNum}, #{yellowFlagNum}, #{whiteFlagNum}, #{blueFlagNum}, #{createTime})
     </insert>
+
+    <select id="getRecordList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="base_column"/>
+        from flag_selling_record
+        where create_time between #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+    </select>
+
 </mapper>

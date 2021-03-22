@@ -9,6 +9,7 @@ import com.pangu.Http.response.RestResult;
 import com.pangu.Http.response.ResultEnum;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -50,5 +51,11 @@ public class ProfitsCalculateController {
     public RestResult recordSelling(@RequestBody FlagSellingRecord flagSellingRecord){
         Boolean result = myService.recordSelling(flagSellingRecord);
         return result ? RestResult.successResult() : RestResult.failResult(ResultEnum.EXCEPTION);
+    }
+
+    @RequestMapping(value = "/flagSummary")
+    public RestResult<JSONObject> flagSummary(@RequestParam(value = "hour") Long hour){
+        JSONObject result = myService.getSummary(hour);
+        return RestResult.successResult(result);
     }
 }

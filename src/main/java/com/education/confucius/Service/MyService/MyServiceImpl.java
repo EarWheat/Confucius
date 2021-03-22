@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -59,5 +60,30 @@ public class MyServiceImpl extends BaseService implements MyService {
         flagSellingRecord.setUpdateTime(simpleDateFormat.format(date));
         flagSellingRecord.setRecordId(UUID.randomUUID().toString().replace("-", ""));
         return flagMapper.addRecord(flagSellingRecord);
+    }
+
+    @Override
+    public JSONObject getSummary(Long hour) {
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String startTime = simpleDateFormat.format(date).concat(" 00:00:00");
+        String endTime = simpleDateFormat.format(date).concat(" 23:59:59");
+        List<FlagSellingRecord> records = flagMapper.getRecordList(startTime,endTime);
+        return sellingTotal(records);
+    }
+
+    public JSONObject sellingTotal(List<FlagSellingRecord> records){
+        int red = 0; int green = 0; int yellow = 0; int white = 0;int blue = 0;int total = 0;
+        for(FlagSellingRecord record : records){
+            red += record.getRedFlagNum();
+            green += record.getGreenFlagNum();
+            yellow += record.getYellowFlagNum();
+            white += record.getWhiteFlagNum();
+            blue += record.getBlueFlagNum();
+        }
+        total = red + green + yellow + white + blue;
+        JSONObject result = new JSONObject();
+        result.put("total",total);result.put("red",red);result.put("green",green);result.put("yellow",yellow);result.put("white",white);result.put("blue",blue);
+        return result;
     }
 }
