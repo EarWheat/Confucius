@@ -2,7 +2,9 @@ package com.education.confucius.Service.MyService;
 
 import com.alibaba.fastjson.JSONObject;
 import com.education.confucius.Dao.My.FlagMapper;
+import com.education.confucius.Entity.My.BaseExpend;
 import com.education.confucius.Entity.My.Flag.Flag;
+import com.education.confucius.Entity.My.Flag.FlagInCome;
 import com.education.confucius.Entity.My.Flag.FlagSellingRecord;
 import com.education.confucius.Entity.My.Gem.GemRequest;
 import com.education.confucius.Entity.My.Profits;
@@ -13,6 +15,7 @@ import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -64,12 +67,21 @@ public class MyServiceImpl extends BaseService implements MyService {
 
     @Override
     public JSONObject getSummary(Long hour) {
+        JSONObject result = new JSONObject();
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String startTime = simpleDateFormat.format(date).concat(" 00:00:00");
         String endTime = simpleDateFormat.format(date).concat(" 23:59:59");
         List<FlagSellingRecord> records = flagMapper.getRecordList(startTime,endTime);
-        return sellingTotal(records);
+        JSONObject detail = sellingTotal(records);
+        if(detail.containsKey("total")){
+            result.put("income", FlagInCome.calculateFlagProfits(detail.getInteger("total")));
+        }
+        result.put("expend", BaseExpend.expend(hour));
+        Long profits = result.getLong("income") - result.getLong("expend");
+        result.put("profits",profits);
+        result.put("sellingDetail",detail);
+        return result;
     }
 
     public JSONObject sellingTotal(List<FlagSellingRecord> records){

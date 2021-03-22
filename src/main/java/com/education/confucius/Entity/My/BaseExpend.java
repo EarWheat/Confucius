@@ -2,6 +2,7 @@ package com.education.confucius.Entity.My;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -12,8 +13,13 @@ import lombok.Data;
  * Date         Author          Description
  * ------------------------------------------ *
  */
-@Data
 public class BaseExpend {
     @JSONField
     public Long hour;
+    @JSONField
+    public Long carValue;
+
+    public static Long expend(Long hour){
+        return hour * 6 * MyConstant.CAR_VALUE;
+    }
 }

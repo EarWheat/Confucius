@@ -1,6 +1,7 @@
 package com.education.confucius.Entity.My;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.education.confucius.Entity.My.Flag.Flag;
 import lombok.Data;
 
 /**
