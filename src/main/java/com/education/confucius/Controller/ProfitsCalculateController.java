@@ -4,6 +4,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.education.confucius.Entity.My.Flag.Flag;
 import com.education.confucius.Entity.My.Flag.FlagSellingRecord;
 import com.education.confucius.Entity.My.Gem.GemRequest;
+import com.education.confucius.Entity.My.Items.Item;
+import com.education.confucius.Entity.My.Items.ItemEnum;
+import com.education.confucius.Factory.ItemSellingFactory;
 import com.education.confucius.Service.MyService.MyService;
 import com.pangu.Http.response.RestResult;
 import com.pangu.Http.response.ResultEnum;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -47,15 +51,35 @@ public class ProfitsCalculateController {
         return RestResult.successResult(summary);
     }
 
+    /**
+     * 记录贩卖的旗子
+     * @param flagSellingRecord
+     * @return
+     */
     @RequestMapping(value = "/sellingFlag")
-    public RestResult recordSelling(@RequestBody FlagSellingRecord flagSellingRecord){
+    public RestResult recordSellingFlag(@RequestBody FlagSellingRecord flagSellingRecord){
         Boolean result = myService.recordSelling(flagSellingRecord);
         return result ? RestResult.successResult() : RestResult.failResult(ResultEnum.EXCEPTION);
     }
 
+    /**
+     * 总结
+     * @param hour
+     * @return
+     */
     @RequestMapping(value = "/flagSummary")
     public RestResult<JSONObject> flagSummary(@RequestParam(value = "hour") Long hour){
         JSONObject result = myService.getSummary(hour);
         return RestResult.successResult(result);
+    }
+
+    @RequestMapping(value = "/sellingMedicine")
+    public RestResult<JSONObject> recordSellingMedicine(@RequestParam(value = "num") int num){
+        Item item = ItemSellingFactory.getItem(ItemEnum.Medicine);
+        if(item == null){
+            return RestResult.failResult(ResultEnum.PARAM_EMPTY);
+        }
+        item.setNum(Optional.of(num).orElse(0));
+        return RestResult.successResult();
     }
 }

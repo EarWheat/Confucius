@@ -7,6 +7,7 @@ import com.education.confucius.Entity.My.Flag.Flag;
 import com.education.confucius.Entity.My.Flag.FlagInCome;
 import com.education.confucius.Entity.My.Flag.FlagSellingRecord;
 import com.education.confucius.Entity.My.Gem.GemRequest;
+import com.education.confucius.Entity.My.Items.Item;
 import com.education.confucius.Entity.My.Profits;
 import com.education.confucius.Service.MyBaseService.BaseService;
 import org.springframework.stereotype.Service;

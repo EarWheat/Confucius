@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.education.confucius.Entity.My.Flag.Flag;
 import com.education.confucius.Entity.My.Flag.FlagSellingRecord;
 import com.education.confucius.Entity.My.Gem.GemRequest;
+import com.education.confucius.Entity.My.Items.Item;
 import org.springframework.stereotype.Service;
 
 import java.util.Properties;

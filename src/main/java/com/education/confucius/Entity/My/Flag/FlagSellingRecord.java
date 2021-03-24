@@ -1,6 +1,7 @@
 package com.education.confucius.Entity.My.Flag;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.education.confucius.Entity.My.Items.Item;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,12 +16,10 @@ import java.io.Serializable;
  * ------------------------------------------ *
  */
 @Data
-public class FlagSellingRecord implements Serializable {
+public class FlagSellingRecord extends Item implements Serializable {
 
     private static final long serialVersionUID = 1473645666621141L;
 
-    @JSONField
-    public String recordId;
     @JSONField
     public Integer redFlagNum = 0;
     @JSONField
@@ -31,8 +30,4 @@ public class FlagSellingRecord implements Serializable {
     public Integer whiteFlagNum = 0;
     @JSONField
     public Integer blueFlagNum = 0;
-    @JSONField
-    private String createTime;
-    @JSONField
-    private String updateTime;
 }
