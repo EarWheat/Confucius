@@ -37,4 +37,7 @@ public class Constants {
     public static final String BAIDU_DIALOG_RESPONSE_SESSION = "baidu_response_session";
     public static final String SESSION_CONNECT_TIME ="sessionConnectTimes";
     public static final String DIALOG_REDIS_KEY = "dialog_redis_";
+    public static final Long FLAG_SELLING_PRICE = 76666L;
+    public static final Long FLAG_PURCHASE_PRICE = 56000L;
+    public static final Long CAR_VALUE = 13000L;
 }

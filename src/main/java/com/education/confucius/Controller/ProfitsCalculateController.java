@@ -1,6 +1,7 @@
 package com.education.confucius.Controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.education.confucius.Dao.My.MedicineMapper;
 import com.education.confucius.Entity.My.Flag.Flag;
 import com.education.confucius.Entity.My.Flag.FlagSellingRecord;
 import com.education.confucius.Entity.My.Gem.GemRequest;
@@ -34,13 +35,14 @@ public class ProfitsCalculateController {
 
     @Resource
     public MyService myService;
+
     /**
      * 宝石收益
      * @param gemRequest
      * @return
      */
     @RequestMapping(value = "gem")
-    public RestResult calculateGemProfits(@RequestBody GemRequest gemRequest){
+    public RestResult<JSONObject> calculateGemProfits(@RequestBody GemRequest gemRequest){
         JSONObject summary = myService.calculateGemProfits(gemRequest);
         return RestResult.successResult(summary);
     }
@@ -68,18 +70,19 @@ public class ProfitsCalculateController {
      * @return
      */
     @RequestMapping(value = "/flagSummary")
-    public RestResult<JSONObject> flagSummary(@RequestParam(value = "hour") Long hour){
+    public RestResult<JSONObject> flagSummary(@RequestParam(value = "hour") Double hour){
         JSONObject result = myService.getSummary(hour);
         return RestResult.successResult(result);
     }
 
-    @RequestMapping(value = "/sellingMedicine")
-    public RestResult<JSONObject> recordSellingMedicine(@RequestParam(value = "num") int num){
-        Item item = ItemSellingFactory.getItem(ItemEnum.Medicine);
+    @RequestMapping(value = "/sell")
+    public RestResult recordSellingMedicine(@RequestParam(value = "type") String type, @RequestParam(value = "num") int num){
+        Item item = ItemSellingFactory.getItem(type);
         if(item == null){
             return RestResult.failResult(ResultEnum.PARAM_EMPTY);
         }
         item.setNum(Optional.of(num).orElse(0));
-        return RestResult.successResult();
+        Boolean result = myService.recordSellingV2(item);
+        return result ? RestResult.successResult() : RestResult.failResult(ResultEnum.EXCEPTION);
     }
 }

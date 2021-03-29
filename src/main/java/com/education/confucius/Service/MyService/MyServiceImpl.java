@@ -2,6 +2,7 @@ package com.education.confucius.Service.MyService;
 
 import com.alibaba.fastjson.JSONObject;
 import com.education.confucius.Dao.My.FlagMapper;
+import com.education.confucius.Dao.My.ItemMapper;
 import com.education.confucius.Entity.My.BaseExpend;
 import com.education.confucius.Entity.My.Flag.Flag;
 import com.education.confucius.Entity.My.Flag.FlagInCome;
@@ -16,7 +17,6 @@ import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -33,6 +33,9 @@ public class MyServiceImpl extends BaseService implements MyService {
 
     @Resource
     public FlagMapper flagMapper;
+
+    @Resource
+    public ItemMapper itemMapper;
 
     @Override
     public JSONObject calculateGemProfits(GemRequest gemRequest) {
@@ -67,7 +70,21 @@ public class MyServiceImpl extends BaseService implements MyService {
     }
 
     @Override
-    public JSONObject getSummary(Long hour) {
+    public Boolean recordSellingV2(Item item) {
+//        Date date = new Date();
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+////        String createTime = simpleDateFormat.format(date);
+////        String recordId = UUID.randomUUID().toString().replace("-", "");
+//        item.setCreateTime(simpleDateFormat.format(date));
+//        item.setUpdateTime(simpleDateFormat.format(date));
+//        item.setRecordId(UUID.randomUUID().toString().replace("-", ""));
+//        return mapper.addRecord(item);
+        return false;
+    }
+
+
+    @Override
+    public JSONObject getSummary(Double hour) {
         JSONObject result = new JSONObject();
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");

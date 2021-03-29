@@ -1,6 +1,7 @@
 package com.education.confucius.Entity.My;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.education.confucius.Constants.Constants;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -19,7 +20,7 @@ public class BaseExpend {
     @JSONField
     public Long carValue;
 
-    public static Long expend(Long hour){
-        return hour * 6 * MyConstant.CAR_VALUE;
+    public static Long expend(Double hour){
+        return new Double(hour * 6 * Constants.CAR_VALUE).longValue();
     }
 }

@@ -1,6 +1,7 @@
 package com.education.confucius.Service.MyService;
 
 import com.alibaba.fastjson.JSONObject;
+import com.education.confucius.Dao.My.ItemMapper;
 import com.education.confucius.Entity.My.Flag.Flag;
 import com.education.confucius.Entity.My.Flag.FlagSellingRecord;
 import com.education.confucius.Entity.My.Gem.GemRequest;
@@ -22,5 +23,6 @@ public interface MyService {
     JSONObject calculateGemProfits(GemRequest gemRequest);
     JSONObject calculateFlagProfits(Flag flag);
     Boolean recordSelling(FlagSellingRecord flagSellingRecord);
-    JSONObject getSummary(Long hour);
+    Boolean recordSellingV2(Item item);
+    JSONObject getSummary(Double hour);
 }

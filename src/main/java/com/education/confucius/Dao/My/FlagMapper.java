@@ -16,7 +16,7 @@ import java.util.List;
  * ------------------------------------------ *
  */
 @Mapper
-public interface FlagMapper {
+public interface FlagMapper extends ItemMapper{
     Boolean addRecord(FlagSellingRecord flagSellingRecord);
     List<FlagSellingRecord> getRecordList(String startTime, String endTime);
 }

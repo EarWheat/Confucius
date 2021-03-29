@@ -3,6 +3,7 @@ package com.education.confucius.Entity.My.Flag;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.education.confucius.Entity.My.Items.Item;
 import lombok.Data;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.io.Serializable;
 

@@ -1,9 +1,14 @@
 package com.education.confucius.Factory;
 
+import com.education.confucius.Dao.My.ItemMapper;
+import com.education.confucius.Dao.My.MedicineMapper;
 import com.education.confucius.Entity.My.Flag.FlagSellingRecord;
 import com.education.confucius.Entity.My.Items.Item;
 import com.education.confucius.Entity.My.Items.ItemEnum;
 import com.education.confucius.Entity.My.Medicine.MedicineSellingRecord;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -14,11 +19,12 @@ import com.education.confucius.Entity.My.Medicine.MedicineSellingRecord;
  * Date         Author          Description
  * ------------------------------------------ *
  */
+@Component
 public class ItemSellingFactory {
-    public static Item getItem(ItemEnum item){
-        if(item.equals(ItemEnum.Flag)){
+    public static Item getItem(String type){
+        if(type.equals(ItemEnum.Flag.name())){
             return new FlagSellingRecord();
-        } else if(item.equals(ItemEnum.Medicine)){
+        } else if(type.equals(ItemEnum.Medicine.name())){
             return new MedicineSellingRecord();
         }
         return null;

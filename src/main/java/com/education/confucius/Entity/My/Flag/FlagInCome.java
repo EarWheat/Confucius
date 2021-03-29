@@ -1,6 +1,7 @@
 package com.education.confucius.Entity.My.Flag;
 
-import com.education.confucius.Entity.My.MyConstant;
+
+import com.education.confucius.Constants.Constants;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -13,7 +14,7 @@ import com.education.confucius.Entity.My.MyConstant;
  */
 public class FlagInCome {
     public static Long calculateFlagProfits(Integer num){
-        Long singleProfits = MyConstant.FLAG_SELLING_PRICE - MyConstant.FLAG_PURCHASE_PRICE;
+        Long singleProfits = Constants.FLAG_SELLING_PRICE - Constants.FLAG_PURCHASE_PRICE;
         return singleProfits * num;
     }
 }
