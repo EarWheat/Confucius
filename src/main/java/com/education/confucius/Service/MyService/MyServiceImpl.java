@@ -7,9 +7,11 @@ import com.education.confucius.Entity.My.BaseExpend;
 import com.education.confucius.Entity.My.Flag.Flag;
 import com.education.confucius.Entity.My.Flag.FlagInCome;
 import com.education.confucius.Entity.My.Flag.FlagSellingRecord;
+import com.education.confucius.Entity.My.Gem.Gem;
 import com.education.confucius.Entity.My.Gem.GemRequest;
 import com.education.confucius.Entity.My.Items.Item;
 import com.education.confucius.Entity.My.Profits;
+import com.education.confucius.Factory.GemFactory;
 import com.education.confucius.Service.MyBaseService.BaseService;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +41,8 @@ public class MyServiceImpl extends BaseService implements MyService {
 
     @Override
     public JSONObject calculateGemProfits(GemRequest gemRequest) {
+        Gem gem = GemFactory.getGem(gemRequest.getName());
+        gem.getSellingPrice();
         return null;
     }
 

@@ -6,23 +6,46 @@ import com.education.confucius.Entity.Event.EventEnum;
 import com.education.confucius.Entity.My.Gem.Gem;
 import com.education.confucius.Entity.My.Gem.GemEnum;
 import com.education.confucius.Entity.RejectEvent.RejectEvent;
+import com.education.confucius.Service.GemService.GemService;
+import com.pangu.Context.SpringApplicationContext;
+
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * @author liuzhaoluliuzhaolu
  * @date 2021/2/22 下午4:47
- * @desc 宝石工厂类
+ * @desc 宝石工厂类，仿造的别人的代码，还是厉害。
+ * 1、双重锁的单例模式
+ * 2、stream流配置
  * @prd
  * @Modification History:
  * Date         Author          Description
  * ------------------------------------------ *
  */
 public class GemFactory {
-    public static Gem getGem(String gemName){
-        if(gemName.equals(GemEnum.BlackGem.name)){
-            return new Gem(GemEnum.BlackGem.name,GemEnum.BlackGem.purchasePrice);
-        } else if(gemName.equals(GemEnum.RedGem.name)){
-            return new Gem(GemEnum.RedGem.name,GemEnum.RedGem.purchasePrice);
+
+    private volatile static Map<String, GemService> gemMap;
+
+    public static <T extends GemService> T getGem(String gemName){
+        // double check !
+        if (Objects.isNull(gemMap)) {
+
+            synchronized (GemFactory.class) {
+
+                if (Objects.isNull(gemMap)) {
+
+                    gemMap = SpringApplicationContext.getBeans(GemService.class)
+                            .values()
+                            .stream()
+                            .collect(Collectors.toMap(GemService::name, Function.identity()));
+                }
+            }
+
         }
-        return null;
+
+        return (T) gemMap.get(gemName);
     }
 }

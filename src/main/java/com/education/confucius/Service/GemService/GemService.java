@@ -12,5 +12,6 @@ import com.education.confucius.Entity.My.Gem.GemRequest;
  * ------------------------------------------ *
  */
 public interface GemService {
+    String name();
     Long getProfits(String name, Long sellingPrice, Long level);
 }
