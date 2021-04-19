@@ -5,8 +5,7 @@ import com.education.confucius.Entity.Comment.CommentRequest;
 import com.education.confucius.Service.CommentService.CommentService;
 import com.education.confucius.Service.UserService.UserService;
 import com.pangu.Http.response.RestResult;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.validation.annotation.Validated;
+import com.pangu.Http.response.ResultEnum;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,9 +53,9 @@ public class CommentController {
     @RequestMapping(value = "/publicComment")
     public RestResult publicComment(@RequestBody CommentRequest commentRequest){
         if(commentRequest.getUserName() == null){
-            return RestResult.failResult("please login first");
+            return RestResult.failResult(ResultEnum.EXCEPTION);
         }
         Boolean publicStatus = commentService.publicCommentService(commentRequest);
-        return publicStatus ? RestResult.successResult() : RestResult.failResult("public comment error");
+        return publicStatus ? RestResult.successResult() : RestResult.failResult(ResultEnum.EXCEPTION);
     }
 }

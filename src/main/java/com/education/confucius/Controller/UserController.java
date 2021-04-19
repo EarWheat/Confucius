@@ -64,7 +64,7 @@ public class UserController {
         if(eventResult){
             return RestResult.successResult();
         }
-        return RestResult.failResult("add user error");
+        return RestResult.failResult(ResultEnum.LOGIN_ERROR);
     }
 
 }

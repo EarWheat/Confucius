@@ -1,12 +1,10 @@
 package com.education.confucius.Controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.education.confucius.Dao.My.MedicineMapper;
 import com.education.confucius.Entity.My.Flag.Flag;
 import com.education.confucius.Entity.My.Flag.FlagSellingRecord;
 import com.education.confucius.Entity.My.Gem.GemRequest;
 import com.education.confucius.Entity.My.Items.Item;
-import com.education.confucius.Entity.My.Items.ItemEnum;
 import com.education.confucius.Factory.ItemSellingFactory;
 import com.education.confucius.Service.MyService.MyService;
 import com.pangu.Http.response.RestResult;

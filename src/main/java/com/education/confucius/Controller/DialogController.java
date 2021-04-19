@@ -9,8 +9,6 @@ import com.education.confucius.Service.AuthService.AuthService;
 import com.education.confucius.Service.DialogService.DialogService;
 import com.pangu.Http.response.RestResult;
 import com.pangu.Http.response.ResultEnum;
-import com.pangu.HttpSession.HttpSessionContext;
-import com.pangu.Redis.RedisUtil;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  * @author liuzhaoluliuzhaolu

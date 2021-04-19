@@ -1,10 +1,5 @@
 package com.education.confucius.SyncController;
 
-import com.pangu.Http.response.RestResult;
-import com.pangu.Mq.consumer.MqMessageListener;
-import com.pangu.Mq.consumer.MqMessageListenerConfig;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-
 /**
  * @author liuzhaoluliuzhaolu
  * @date 2020-12-28 17:24

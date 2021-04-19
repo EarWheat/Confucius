@@ -1,21 +1,17 @@
 package com.education.confucius.Service.DialogService;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.education.confucius.Constants.Constants;
 import com.education.confucius.Entity.Dialog.Request;
 import com.education.confucius.Entity.Dialog.DialogParam;
 import com.pangu.Http.request.HttpClient;
-import com.pangu.HttpSession.HttpSessionContext;
 import com.pangu.Redis.RedisUtil;
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
 import java.util.*;
 
 /**

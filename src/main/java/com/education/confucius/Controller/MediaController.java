@@ -36,7 +36,7 @@ public class MediaController {
         if(StringUtils.isBlank(media.getResource())){
             return RestResult.failResult(ResultEnum.PARAM_EMPTY);
         }
-        return mediaService.publicMedia(media) ? RestResult.successResult() : RestResult.failResult("public media error");
+        return mediaService.publicMedia(media) ? RestResult.successResult() : RestResult.failResult(ResultEnum.EXCEPTION);
     }
 
     @RequestMapping("/getMediaList")

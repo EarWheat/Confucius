@@ -2,11 +2,9 @@ package com.education.confucius.Controller;
 
 import com.education.confucius.Entity.Event.EventEnum;
 import com.education.confucius.Entity.JudgeResult;
-import com.education.confucius.Entity.RejectEvent.RejectEvent;
 import com.education.confucius.Entity.RejectEvent.RejectEventParam;
 import com.education.confucius.Service.EventService.EventService;
 import com.pangu.Http.response.RestResult;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

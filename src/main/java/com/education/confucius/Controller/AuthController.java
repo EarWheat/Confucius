@@ -2,13 +2,8 @@ package com.education.confucius.Controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.education.confucius.Entity.Auth.AuthEnum;
-import com.education.confucius.Entity.Event.EventEnum;
-import com.education.confucius.Entity.JudgeResult;
-import com.education.confucius.Entity.RejectEvent.RejectEventParam;
 import com.education.confucius.Service.AuthService.AuthService;
-import com.education.confucius.Service.AuthService.AuthServiceImpl;
 import com.pangu.Http.response.RestResult;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
