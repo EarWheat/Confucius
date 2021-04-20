@@ -7,7 +7,7 @@ import com.education.confucius.Entity.My.Gem.Gem;
 import com.education.confucius.Entity.My.Gem.GemEnum;
 import com.education.confucius.Entity.RejectEvent.RejectEvent;
 import com.education.confucius.Service.GemService.GemService;
-import com.pangu.Context.SpringApplicationContext;
+import com.pangu.Base.Context.SpringApplicationContext;
 
 import java.util.Map;
 import java.util.Objects;
@@ -27,9 +27,9 @@ import java.util.stream.Collectors;
  */
 public class GemFactory {
 
-    private volatile static Map<String, GemService> gemMap;
+    private volatile static Map<String, Gem> gemMap;
 
-    public static <T extends GemService> T getGem(String gemName){
+    public static <T extends Gem> T getGem(String gemName){
         // double check !
         if (Objects.isNull(gemMap)) {
 
@@ -37,10 +37,10 @@ public class GemFactory {
 
                 if (Objects.isNull(gemMap)) {
 
-                    gemMap = SpringApplicationContext.getBeans(GemService.class)
+                    gemMap = SpringApplicationContext.getBeans(Gem.class)
                             .values()
                             .stream()
-                            .collect(Collectors.toMap(GemService::name, Function.identity()));
+                            .collect(Collectors.toMap(Gem::getName, Function.identity()));
                 }
             }
 

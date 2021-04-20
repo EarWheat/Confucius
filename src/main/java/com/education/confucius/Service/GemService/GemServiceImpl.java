@@ -29,11 +29,10 @@ public class GemServiceImpl implements GemService {
     public Long getProfits(String name, Long sellingPrice, Long level) {
         Gem gem = GemFactory.getGem(name);
         Optional.ofNullable(gem).ifPresent(this::calculatePurchasePrice);
-        Optional.ofNullable(gem).ifPresent(Gem::calculateProfits);
         if(gem == null){
             return 0L;
         }
-        return gem.getProfits();
+        return 0L;
     }
 
     /**

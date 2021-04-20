@@ -12,6 +12,7 @@ import com.education.confucius.Entity.My.Gem.GemRequest;
 import com.education.confucius.Entity.My.Items.Item;
 import com.education.confucius.Entity.My.Profits;
 import com.education.confucius.Factory.GemFactory;
+import com.education.confucius.Service.GemService.GemService;
 import com.education.confucius.Service.MyBaseService.BaseService;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -40,9 +42,8 @@ public class MyServiceImpl extends BaseService implements MyService {
     public ItemMapper itemMapper;
 
     @Override
-    public JSONObject calculateGemProfits(GemRequest gemRequest) {
-        Gem gem = GemFactory.getGem(gemRequest.getName());
-        gem.getSellingPrice();
+    public JSONObject calculateGemProfits() {
+        GemService gem = GemFactory.getGem("black");
         return null;
     }
 

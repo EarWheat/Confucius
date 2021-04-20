@@ -36,12 +36,11 @@ public class ProfitsCalculateController {
 
     /**
      * 宝石收益
-     * @param gemRequest
      * @return
      */
     @RequestMapping(value = "gem")
-    public RestResult<JSONObject> calculateGemProfits(@RequestBody GemRequest gemRequest){
-        JSONObject summary = myService.calculateGemProfits(gemRequest);
+    public RestResult<JSONObject> calculateGemProfits(){
+        JSONObject summary = myService.calculateGemProfits();
         return RestResult.successResult(summary);
     }
 

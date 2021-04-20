@@ -20,7 +20,7 @@ import java.util.Properties;
  * ------------------------------------------ *
  */
 public interface MyService {
-    JSONObject calculateGemProfits(GemRequest gemRequest);
+    JSONObject calculateGemProfits();
     JSONObject calculateFlagProfits(Flag flag);
     Boolean recordSelling(FlagSellingRecord flagSellingRecord);
     Boolean recordSellingV2(Item item);
