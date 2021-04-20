@@ -17,6 +17,14 @@ import java.util.Optional;
  */
 @Service
 public class GemServiceImpl implements GemService {
+
+    private static final Long mergePrice = 500L;
+
+    @Override
+    public String name() {
+        return null;
+    }
+
     @Override
     public Long getProfits(String name, Long sellingPrice, Long level) {
         Gem gem = GemFactory.getGem(name);
@@ -41,6 +49,18 @@ public class GemServiceImpl implements GemService {
         gem.setPurchasePrice(purchasePrice);
     }
 
+    public Long calProfits(Long level, Long purchasePrice, Long sellingPrice){
+        Long cost = calCost(level,purchasePrice);
+        return sellingPrice - cost;
+    }
+
+    public Long calCost(Long level, Long purchasePrice){
+        if(level == 1L){
+            return purchasePrice;
+        }
+        return calCost(level - 1, purchasePrice) * 2 + mergePrice * (level - 1);
+    }
+
     /**
      * 计算合成宝石需要的宝石数量
      * @param level
@@ -55,8 +75,6 @@ public class GemServiceImpl implements GemService {
 
     public static void main(String[] args) {
         GemServiceImpl gemService = new GemServiceImpl();
-        for (int i = 1; i < 9; i++) {
-            System.out.println("level " + i + " 需要" + gemService.needGemMerged(Long.parseLong(String.valueOf(i))) + "颗宝石");
-        }
+        System.out.println(gemService.calProfits(8L,125000L,17200000L));
     }
 }
