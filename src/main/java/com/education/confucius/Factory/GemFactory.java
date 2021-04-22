@@ -9,6 +9,7 @@ import com.education.confucius.Entity.RejectEvent.RejectEvent;
 import com.education.confucius.Service.GemService.GemService;
 import com.pangu.Base.Context.SpringApplicationContext;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
@@ -40,12 +41,27 @@ public class GemFactory {
                     gemMap = SpringApplicationContext.getBeans(Gem.class)
                             .values()
                             .stream()
-                            .collect(Collectors.toMap(Gem::getName, Function.identity()));
+                            .collect(Collectors.toMap(Gem::name, Function.identity()));
                 }
             }
 
         }
 
         return (T) gemMap.get(gemName);
+    }
+
+    public static <T extends Gem> Map<String, Gem> getAllGem(){
+        if(Objects.isNull(gemMap)){
+            synchronized (GemFactory.class){
+                if(Objects.isNull(gemMap)){
+                    gemMap = SpringApplicationContext.getBeans(Gem.class)
+                            .values()
+                            .stream()
+                            .collect(Collectors.toMap(Gem::name, Function.identity()));
+                }
+            }
+        }
+
+        return gemMap;
     }
 }

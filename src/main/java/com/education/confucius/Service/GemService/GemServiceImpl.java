@@ -1,10 +1,12 @@
 package com.education.confucius.Service.GemService;
 
+import com.alibaba.fastjson.JSONObject;
 import com.education.confucius.Entity.My.Gem.Gem;
 import com.education.confucius.Factory.GemFactory;
+import jdk.nashorn.api.scripting.JSObject;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.*;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -26,13 +28,11 @@ public class GemServiceImpl implements GemService {
     }
 
     @Override
-    public Long getProfits(String name, Long sellingPrice, Long level) {
-        Gem gem = GemFactory.getGem(name);
-        Optional.ofNullable(gem).ifPresent(this::calculatePurchasePrice);
-        if(gem == null){
-            return 0L;
-        }
-        return 0L;
+    public Map<String, JSONObject> profitsSummary() {
+        Map<String, Gem> gemMap = GemFactory.getAllGem();
+        Map<String, JSONObject> gemSummary = new HashMap<>(8);
+//        Optional.ofNullable(gemMap).(g -> gemSummary.put(g.name(),g.calProfits()));
+        return gemSummary;
     }
 
     /**
@@ -41,11 +41,11 @@ public class GemServiceImpl implements GemService {
      * @return
      */
     public void calculatePurchasePrice(Gem gem){
-        int numOfGem = needGemMerged(gem.level);    // 需要多少个一级宝石
-        Long purchasePrice = gem.purchasePrice * numOfGem;
-        // TODO: 算上点卡钱
-        // TODO: 算上体力
-        gem.setPurchasePrice(purchasePrice);
+//        int numOfGem = needGemMerged(gem.level);    // 需要多少个一级宝石
+//        Long purchasePrice = gem.purchasePrice * numOfGem;
+//        // TODO: 算上点卡钱
+//        // TODO: 算上体力
+//        gem.setPurchasePrice(purchasePrice);
     }
 
     public Long calProfits(Long level, Long purchasePrice, Long sellingPrice){

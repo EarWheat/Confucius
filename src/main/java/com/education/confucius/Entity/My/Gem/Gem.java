@@ -1,6 +1,8 @@
 package com.education.confucius.Entity.My.Gem;
 
 
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * @author liuzhaoluliuzhaolu
  * @date 2021/2/22 下午3:32
@@ -11,5 +13,7 @@ package com.education.confucius.Entity.My.Gem;
  * ------------------------------------------ *
  */
 public interface Gem{
-    public Long getProfits();
+    String name();
+    JSONObject calProfits();
+
 }

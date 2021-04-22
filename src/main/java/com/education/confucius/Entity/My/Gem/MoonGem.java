@@ -1,9 +1,6 @@
 package com.education.confucius.Entity.My.Gem;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import com.alibaba.fastjson.JSONObject;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -14,20 +11,15 @@ import org.springframework.stereotype.Component;
  * Date         Author          Description
  * ------------------------------------------ *
  */
-@Data
-@Component
-@ConfigurationProperties(prefix = "my.gem.moon")
-public class MoonGem extends Gem {
-    @JSONField(name = "name")
-    public String name;
+public class MoonGem implements Gem {
 
-    @JSONField(name =  "sellingPrice")
-    public Long sellingPrice;
+    @Override
+    public String name() {
+        return GemEnum.MoonGem.name;
+    }
 
-    @JSONField(name = "purchasePrice")
-    public Long purchasePrice;
-
-    @JSONField(name = "level")
-    public Long level;
-
+    @Override
+    public JSONObject calProfits() {
+        return null;
+    }
 }

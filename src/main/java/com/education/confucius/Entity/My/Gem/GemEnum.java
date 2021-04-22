@@ -10,8 +10,9 @@ package com.education.confucius.Entity.My.Gem;
  * ------------------------------------------ *
  */
 public enum GemEnum {
-    RedGem("Red", 7500L),
-    BlackGem("Black",105000L);
+    RedGem("Red", 75000L),
+    BlackGem("Black",123000L),
+    MoonGem("Moon",81000L);
 
     public String name;
     public Long purchasePrice;

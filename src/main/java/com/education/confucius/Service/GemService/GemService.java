@@ -1,6 +1,9 @@
 package com.education.confucius.Service.GemService;
 
-import com.education.confucius.Entity.My.Gem.GemRequest;
+import com.alibaba.fastjson.JSONObject;
+
+
+import java.util.Map;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -13,5 +16,5 @@ import com.education.confucius.Entity.My.Gem.GemRequest;
  */
 public interface GemService {
     String name();
-    Long getProfits(String name, Long sellingPrice, Long level);
+    Map<String, JSONObject> profitsSummary();
 }
