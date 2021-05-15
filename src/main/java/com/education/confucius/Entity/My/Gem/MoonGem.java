@@ -11,7 +11,12 @@ import com.alibaba.fastjson.JSONObject;
  * Date         Author          Description
  * ------------------------------------------ *
  */
-public class MoonGem implements Gem {
+public class MoonGem extends BaseGem implements Gem {
+
+    public Integer level = 8;
+    public Long sellingPrice = 11000000L;
+    public Long perLevelCost = 75000L;
+
 
     @Override
     public String name() {
@@ -19,7 +24,8 @@ public class MoonGem implements Gem {
     }
 
     @Override
-    public JSONObject calProfits() {
-        return null;
+    public Long calProfits() {
+        return super.calProfits(this.level,this.sellingPrice,this.perLevelCost);
     }
+
 }

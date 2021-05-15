@@ -74,6 +74,6 @@ public class GemServiceImpl implements GemService {
 
     public static void main(String[] args) {
         GemServiceImpl gemService = new GemServiceImpl();
-        System.out.println(gemService.calProfits(8L,125000L,17200000L));
+        System.out.println(gemService.calProfits(8L,127000L,17600000L));
     }
 }

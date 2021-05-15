@@ -1,6 +1,7 @@
 package com.education.confucius.Service.MyService;
 
 import com.alibaba.fastjson.JSONObject;
+import com.education.confucius.Constants.Constants;
 import com.education.confucius.Dao.My.FlagMapper;
 import com.education.confucius.Dao.My.ItemMapper;
 import com.education.confucius.Entity.My.BaseExpend;
@@ -14,14 +15,13 @@ import com.education.confucius.Entity.My.Profits;
 import com.education.confucius.Factory.GemFactory;
 import com.education.confucius.Service.GemService.GemService;
 import com.education.confucius.Service.MyBaseService.BaseService;
+import com.pangu.Http.response.RestResult;
+import com.pangu.Http.response.ResultEnum;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -43,7 +43,18 @@ public class MyServiceImpl extends BaseService implements MyService {
 
     @Override
     public JSONObject calculateGemProfits() {
-        GemService gem = GemFactory.getGem("black");
+        Map<String, Gem> gemList = GemFactory.getAllGem();
+        try {
+            if(Objects.isNull(gemList)){
+                return null;
+            } else {
+                for(Map.Entry<String, Gem> gemEntry : gemList.entrySet()){
+                    Gem gem = gemEntry.getValue();
+                }
+            }
+        } catch (Exception e){
+            return null;
+        }
         return null;
     }
 
