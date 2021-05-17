@@ -14,6 +14,7 @@ import com.alibaba.fastjson.JSONObject;
  */
 public interface Gem{
     String name();
+    Integer level();
     Long calProfits();
 
 }

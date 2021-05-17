@@ -1,6 +1,8 @@
 package com.education.confucius.Entity.My.Gem;
 
 import com.alibaba.fastjson.JSONObject;
+import lombok.Data;
+import org.springframework.stereotype.Component;
 
 /**
  * @author liuzhaoluliuzhaolu
@@ -11,6 +13,8 @@ import com.alibaba.fastjson.JSONObject;
  * Date         Author          Description
  * ------------------------------------------ *
  */
+@Component
+@Data
 public class MoonGem extends BaseGem implements Gem {
 
     public Integer level = 8;
@@ -21,6 +25,11 @@ public class MoonGem extends BaseGem implements Gem {
     @Override
     public String name() {
         return GemEnum.MoonGem.name;
+    }
+
+    @Override
+    public Integer level(){
+        return this.level;
     }
 
     @Override

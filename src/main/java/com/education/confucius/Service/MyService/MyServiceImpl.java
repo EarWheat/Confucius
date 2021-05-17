@@ -44,18 +44,23 @@ public class MyServiceImpl extends BaseService implements MyService {
     @Override
     public JSONObject calculateGemProfits() {
         Map<String, Gem> gemList = GemFactory.getAllGem();
+        JSONObject gemProfits = new JSONObject();
         try {
             if(Objects.isNull(gemList)){
                 return null;
             } else {
                 for(Map.Entry<String, Gem> gemEntry : gemList.entrySet()){
                     Gem gem = gemEntry.getValue();
+                    Long profits = gem.calProfits();
+                    gemProfits.put("name",gem.name());
+                    gemProfits.put("level",gem.level());
+                    gemProfits.put("profits",profits);
                 }
             }
         } catch (Exception e){
             return null;
         }
-        return null;
+        return gemProfits;
     }
 
     /**
